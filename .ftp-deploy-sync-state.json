@@ -1,0 +1,1623 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1777276478329,
+    "data": [
+        {
+            "type": "file",
+            "name": ".editorconfig",
+            "size": 252,
+            "hash": "f78cc5a2ef8ba61ad956d0f5db453748a981270f6a1b9f4a5a00df8690e7946d"
+        },
+        {
+            "type": "file",
+            "name": ".env.example",
+            "size": 1086,
+            "hash": "a527dd22cebd532f74bdca8352dc2e624bdf0655a8c85be88edd35ac44bd13c3"
+        },
+        {
+            "type": "file",
+            "name": "FINAL_REPORT.txt",
+            "size": 15098,
+            "hash": "c140d1cf6ac61992e098639c79f4f8f069f4f76254101213d2d0983f8c9a3348"
+        },
+        {
+            "type": "file",
+            "name": "PREVIEW_MENU_SPMB.html",
+            "size": 12061,
+            "hash": "eb66c6c500908073a0aae6262820e1164f27c57253100cec21b34e09d86892ed"
+        },
+        {
+            "type": "file",
+            "name": "QUICK_START_SPMB.md",
+            "size": 2295,
+            "hash": "409d85222579b2b60d55e19e4f26346461badb39f1cdd8f5c3a508d2322a125b"
+        },
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 3911,
+            "hash": "d8b15dfcda5b6e61a96730afedc1ed5376e46ba367e21749a9d789cc222009c4"
+        },
+        {
+            "type": "file",
+            "name": "START_HERE.txt",
+            "size": 7198,
+            "hash": "38d43e5b4943b8a2da2c248b0abf9ee028b7d9dea581dae10b7558ebb22606c3"
+        },
+        {
+            "type": "folder",
+            "name": "app"
+        },
+        {
+            "type": "file",
+            "name": "artisan",
+            "size": 425,
+            "hash": "f91a517c0c5d3a904c3f390933964a5e08ec1fc68146882730daac4aca4ffcec"
+        },
+        {
+            "type": "folder",
+            "name": "bootstrap"
+        },
+        {
+            "type": "file",
+            "name": "composer.json",
+            "size": 3035,
+            "hash": "3271630268b44c3bb0c4576417649b69af80c576320d7a6f42a866a532ad3a4c"
+        },
+        {
+            "type": "file",
+            "name": "composer.lock",
+            "size": 393869,
+            "hash": "501105297e9c42fbe74aaeb938bd6643233f8a57216da6396f305302f2ebfdbd"
+        },
+        {
+            "type": "folder",
+            "name": "config"
+        },
+        {
+            "type": "folder",
+            "name": "database"
+        },
+        {
+            "type": "file",
+            "name": "package-lock.json",
+            "size": 135241,
+            "hash": "8b4d0f9a20a1d5bc5a04d0f0c69adcc43dacf8f82b5deee07d2bc5933352be0f"
+        },
+        {
+            "type": "file",
+            "name": "package.json",
+            "size": 549,
+            "hash": "ad68caddd004ff06d2f02a89890c1a7b444f2ce486572080da52dfd209349651"
+        },
+        {
+            "type": "file",
+            "name": "postcss.config.js",
+            "size": 93,
+            "hash": "c713dcb623f3a959b28f6e7f724440660f890288c7b796d8c9ce42372ee7f36b"
+        },
+        {
+            "type": "file",
+            "name": "quran_qb.sql",
+            "size": 29124,
+            "hash": "22b97d2815551f9d5d30457428fe7dbb090b8ad56199864053874964b28b3bae"
+        },
+        {
+            "type": "file",
+            "name": "phpunit.xml",
+            "size": 1284,
+            "hash": "cdb0cb728fc010b1590629c9664796b496540cb22d3b54c78b69ce5980cab61f"
+        },
+        {
+            "type": "folder",
+            "name": "resources"
+        },
+        {
+            "type": "folder",
+            "name": "storage"
+        },
+        {
+            "type": "folder",
+            "name": "routes"
+        },
+        {
+            "type": "file",
+            "name": "tailwind.config.js",
+            "size": 541,
+            "hash": "c57c50e5816a545cbc8b412239f01fb7df1a212abec635eb000c06b6e66688fa"
+        },
+        {
+            "type": "file",
+            "name": "test_countdown.html",
+            "size": 5300,
+            "hash": "152e67be62e04251c378685ddda1ab68c235140327bc0b42c16fdcdcd116422a"
+        },
+        {
+            "type": "file",
+            "name": "vite.config.js",
+            "size": 263,
+            "hash": "b79dffc57362f908a5f6a451c4c4bc1543a7f43b596300691f754f5c8b320312"
+        },
+        {
+            "type": "folder",
+            "name": "tests"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http"
+        },
+        {
+            "type": "folder",
+            "name": "app/Mail"
+        },
+        {
+            "type": "folder",
+            "name": "app/Models"
+        },
+        {
+            "type": "folder",
+            "name": "app/Providers"
+        },
+        {
+            "type": "folder",
+            "name": "app/View"
+        },
+        {
+            "type": "file",
+            "name": "bootstrap/app.php",
+            "size": 875,
+            "hash": "761d95df8ae0bde620ba9f5cb1287863ee5d2e2543f33bd513d0dc7f5ee77ed4"
+        },
+        {
+            "type": "folder",
+            "name": "bootstrap/cache"
+        },
+        {
+            "type": "file",
+            "name": "bootstrap/providers.php",
+            "size": 118,
+            "hash": "e2f76dae46930f862e60e203ffc4467143e927c3437051117d29061be7485170"
+        },
+        {
+            "type": "file",
+            "name": "config/app.php",
+            "size": 4281,
+            "hash": "7081dcd6616dfdac4fbb7e5d873a2661bdf664089143312ac857f2b132aca37e"
+        },
+        {
+            "type": "file",
+            "name": "config/auth.php",
+            "size": 4029,
+            "hash": "50f8a6fabf848d20ea42a21e01066dd8a75bd822c8251a45f8939616432424dc"
+        },
+        {
+            "type": "file",
+            "name": "config/cache.php",
+            "size": 3683,
+            "hash": "b8bcf382283330b94c0a602ff06452de819041ea709e28eea5065d51d1d7d085"
+        },
+        {
+            "type": "file",
+            "name": "config/database.php",
+            "size": 6850,
+            "hash": "91a2d30f4bd74d3317f62ff0cd4c37e7cc553d060cd8a28fe64327db6bdb159c"
+        },
+        {
+            "type": "file",
+            "name": "config/filesystems.php",
+            "size": 2496,
+            "hash": "57b8882c6676aa809ef7c194a15cf20f02eb56c2dc623229d836f97bfc1af8a0"
+        },
+        {
+            "type": "file",
+            "name": "config/logging.php",
+            "size": 4327,
+            "hash": "d90f24826a3330437f2f2fc12bb28680abe1281d35d62b082c234f4b69873835"
+        },
+        {
+            "type": "file",
+            "name": "config/mail.php",
+            "size": 3614,
+            "hash": "825c4b149f2fe412a2e37199794e7c05df7ed86fb51811777faf80238f748aae"
+        },
+        {
+            "type": "file",
+            "name": "config/queue.php",
+            "size": 4199,
+            "hash": "6101774da7c8b79af46d0028f2b8b31a484c3f7eda10b76e5b27b6093ad364a4"
+        },
+        {
+            "type": "file",
+            "name": "config/services.php",
+            "size": 1236,
+            "hash": "84d536a4f9435700f47e4d1db0af00194bcffccf3b82f1616176cf7d8db0b32e"
+        },
+        {
+            "type": "file",
+            "name": "config/session.php",
+            "size": 7848,
+            "hash": "12e3f94eb0653d2b44d754f0a8ef30f7ad5de7536ecb3382617dfebb6577c452"
+        },
+        {
+            "type": "folder",
+            "name": "database/factories"
+        },
+        {
+            "type": "folder",
+            "name": "database/migrations"
+        },
+        {
+            "type": "folder",
+            "name": "database/seeders"
+        },
+        {
+            "type": "folder",
+            "name": "resources/css"
+        },
+        {
+            "type": "folder",
+            "name": "resources/js"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views"
+        },
+        {
+            "type": "folder",
+            "name": "storage/app"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework"
+        },
+        {
+            "type": "folder",
+            "name": "storage/logs"
+        },
+        {
+            "type": "file",
+            "name": "routes/auth.php",
+            "size": 2360,
+            "hash": "ae97a0c4ed28bd79ac0ff8c3a11539489518e1da4f17a3cf7a2b606b96dfd765"
+        },
+        {
+            "type": "file",
+            "name": "routes/console.php",
+            "size": 210,
+            "hash": "9adccc33e7dd400683e434774077c7fdb2f299c5712cedf16a43fdf56f2850fa"
+        },
+        {
+            "type": "file",
+            "name": "routes/web.php",
+            "size": 6300,
+            "hash": "ca8b94a5aa90e7ba0f009f24a190fd3669b169d8fb04ab11cab73f4cb0b6aea7"
+        },
+        {
+            "type": "folder",
+            "name": "tests/Feature"
+        },
+        {
+            "type": "file",
+            "name": "tests/TestCase.php",
+            "size": 142,
+            "hash": "c7c209f5579c42647c1f7b2a79ac828e8b54ac62a98442045a6e94fa2c0d0ebc"
+        },
+        {
+            "type": "folder",
+            "name": "tests/Unit"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Controllers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Middleware"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Requests"
+        },
+        {
+            "type": "file",
+            "name": "app/Mail/ContactFormMail.php",
+            "size": 1132,
+            "hash": "bb1e9fa21edfcf154c3ec3b8caf8fda25ae76facb8aabbd2ce8fb62a518d991f"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Assessment.php",
+            "size": 734,
+            "hash": "168c1da5df4cacf813dc084d5c19a3be71f86a42c45616b4d3f552e761f326c8"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Attendance.php",
+            "size": 574,
+            "hash": "2ac638b276a770ecbbb7767acc61b35e3cb41754b7465cb4cc06dadd2bc96eb1"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/ClassGroup.php",
+            "size": 1525,
+            "hash": "9f6f7ce0d4469380965d6ce932c890ac3251d2ce6ee647381ee90865a8289c23"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Evaluation.php",
+            "size": 693,
+            "hash": "74a7df9bd1c2869d25e252bbb4bc450c7ca48e95e95758edbc4ff8ad68120c93"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Grade.php",
+            "size": 690,
+            "hash": "666b3a3f1ec3a8ffaf87e46804a7d61689b428c76a999f3708c89d5ddb55ca62"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Meeting.php",
+            "size": 914,
+            "hash": "4724f610d703c5077a03b23e6187dad971805211ac8c01ccd295628910bd7a15"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Payment.php",
+            "size": 800,
+            "hash": "f2313fdd8dd3230ffb9ebc32ff2637a728c3c6904530eda061880189f77f2261"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Post.php",
+            "size": 652,
+            "hash": "72a880fcb9eb66ce618e4694c878f53170880e22ae2662fa54efac80aed1365c"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Semester.php",
+            "size": 752,
+            "hash": "5954eb52eca7d97aa27a6600ef6a45895d9d1709496eecff5d82f32a367bda0e"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/SiteSetting.php",
+            "size": 873,
+            "hash": "80c325e8e630d1db546e5d2913db5650b1555eb99a48c44d1776ac9e83cf36c4"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/Subject.php",
+            "size": 497,
+            "hash": "56332afd9f865e0b402a142016567ee887b579384abef305c2381f7809c8c228"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/User.php",
+            "size": 3467,
+            "hash": "0b0e13bc0ef8332717f2aefec136b1ed0f2a9d374bd441d84bf2470e05edbb8c"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/AppServiceProvider.php",
+            "size": 486,
+            "hash": "0c749733800c177ad7bfa7608f8629ae984a8fb8799ff7862693214ad75e1ceb"
+        },
+        {
+            "type": "folder",
+            "name": "app/Providers/Filament"
+        },
+        {
+            "type": "folder",
+            "name": "app/View/Components"
+        },
+        {
+            "type": "file",
+            "name": "bootstrap/cache/packages.php",
+            "size": 3503,
+            "hash": "6be376b07c6b0ce6f256f5b049ce8ce4534a11d16595ae988ce3f529fddd2757"
+        },
+        {
+            "type": "file",
+            "name": "bootstrap/cache/services.php",
+            "size": 23468,
+            "hash": "a5e2357b6d6519dc158fa90680f2d32f54b0cac0e794e750e11309fd429d8e30"
+        },
+        {
+            "type": "file",
+            "name": "database/factories/UserFactory.php",
+            "size": 1075,
+            "hash": "05c4cfa8e4dc7ebe659c66717b30ea6970f62d732a1bbce32b55650cccc6aa8d"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/0001_01_01_000000_create_users_table.php",
+            "size": 1787,
+            "hash": "c44136c626b27b81607f47f1fce4e76fa36ab0efa7d26a146da18b6768f3e6f1"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/0001_01_01_000001_create_cache_table.php",
+            "size": 849,
+            "hash": "20f769d3c11748c1cc42c41cd3789b0b9b2cd0db44ee22d378addac3ff8aed4f"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/0001_01_01_000002_create_jobs_table.php",
+            "size": 1812,
+            "hash": "7c9c712adf4091c87bf2612f4d0dccdfa1df4501553e4ac068b83d7bd5462fa5"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_01_01_000000_create_class_groups_table.php",
+            "size": 1527,
+            "hash": "ca75a946e62750e02b68926f3f09f117470ef05a2f7003365bdfb77d0647db64"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_01_01_000001_create_assessments_table.php",
+            "size": 985,
+            "hash": "271dd2887f4569eb9040c8fae868a84a11caf31ea0b50d525aadb8bed7dd95f8"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_01_01_000002_create_evaluations_table.php",
+            "size": 987,
+            "hash": "a96b5fb22b16b080fa6f79fc4fe94bcd0060e210262f6f85edb597b35e3e8d97"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202618_create_semesters_table.php",
+            "size": 774,
+            "hash": "76ee0ef7e18faf7b0a59764e3b243cb74d83d1f74b80a2adabc3f0dab75b3bac"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202619_create_subjects_table.php",
+            "size": 581,
+            "hash": "eeb8ab5a9556323ccf40783ce9bc884f0f25adbd203370e5d44f918a3c85d098"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202620_create_meetings_table.php",
+            "size": 751,
+            "hash": "ef44557cc61b7c62381f63139edc9656c85081ba4bdc86271645e5979eb48aa4"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202623_create_grades_table.php",
+            "size": 802,
+            "hash": "8a7f721a8b15cac4b016e912788b654ffb3e4c6fd9d288627a728d5ab9f66a69"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202622_create_attendances_table.php",
+            "size": 714,
+            "hash": "95afc44e94fe4e88982f06715e64eeaa6478c7924af66a79a4a767be57a006c9"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202623_create_payments_table.php",
+            "size": 1081,
+            "hash": "8226c717c8e320e6fefa2903b8f93fff87859460f571367da5594bea868d8597"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_24_202625_create_site_settings_table.php",
+            "size": 575,
+            "hash": "e01a91504eb02bd0ef638db9a9c33713f75bbb0fd0820e8e4b9ba89b1109ea8e"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_25_141406_add_student_details_to_users_table.php",
+            "size": 809,
+            "hash": "e8bbe23e1c9a1ce93e21bfcda5908a359e0cd036d2a294007bc2fe9d10188553"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_25_144646_add_gender_to_users_table.php",
+            "size": 570,
+            "hash": "d31ac7ed6e3a40073e31c960e99871c8eeaac14c11f693a0c734edb4eabb6965"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2025_11_25_150354_create_posts_table.php",
+            "size": 1061,
+            "hash": "cc8c673e26f24ffab4894d75918d702ff92cbd6a1c6cebfb29c6c4a853343d76"
+        },
+        {
+            "type": "file",
+            "name": "database/migrations/2026_04_24_142900_rename_subject_id_to_class_group_id_in_meetings_table.php",
+            "size": 543,
+            "hash": "2b8d4a737d2aa7ac5937aec1d8b43fc589fcafeee3a4ed92859e32727a87f6a2"
+        },
+        {
+            "type": "file",
+            "name": "database/seeders/DatabaseSeeder.php",
+            "size": 482,
+            "hash": "cf8e4b6e48360218bb5534f66419c955288f78338eb8a3dba9d8ac3394ec3dbc"
+        },
+        {
+            "type": "file",
+            "name": "database/seeders/SubjectSeeder.php",
+            "size": 612,
+            "hash": "d003f6d638c0eb34a525a4f2069484f7c9462a37363e943f157354a7c70aa63c"
+        },
+        {
+            "type": "file",
+            "name": "resources/css/app.css",
+            "size": 59,
+            "hash": "cc1a7ad0d019ddb1d32d0ecb588ba0ac26ce41d8625dd6c366348b25f83a28ec"
+        },
+        {
+            "type": "file",
+            "name": "resources/js/app.js",
+            "size": 96,
+            "hash": "ef2d6f5db880db7aa4407c2d3930e6ca3c298ae19182aeceae5b4b889ff284f4"
+        },
+        {
+            "type": "file",
+            "name": "resources/js/bootstrap.js",
+            "size": 127,
+            "hash": "6fd9fc82e68fa915a882f4e227b9faacbe7bfd66cb953c628840e83bda6b72f4"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/assessments"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/auth"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/components"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/dashboard.blade.php",
+            "size": 513,
+            "hash": "062ddb4dc3e77516e3a3aac11a9e7c2ff6dcdb8b9b3dad1d68fe076a900503b7"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/emails"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/layouts"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/profile"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/root"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/welcome.blade.php",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "folder",
+            "name": "storage/app/private"
+        },
+        {
+            "type": "folder",
+            "name": "storage/app/public"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/cache"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/sessions"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/testing"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/views"
+        },
+        {
+            "type": "folder",
+            "name": "tests/Feature/Auth"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/ExampleTest.php",
+            "size": 359,
+            "hash": "aaa4a192fb4aa96d4e81eda06a29968da3d9a73b71026b87a67297e66dd985b8"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/ProfileTest.php",
+            "size": 2501,
+            "hash": "3138e455512864a42ac6e16af1fb75760b113e9cfab0684119048f1393941544"
+        },
+        {
+            "type": "file",
+            "name": "tests/Unit/ExampleTest.php",
+            "size": 243,
+            "hash": "ffacae5c1a2a44c809420af5b3b404910da1b12167d58764dac6d10b8ba8cfaf"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/AssessmentResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/AssessmentResource.php",
+            "size": 9905,
+            "hash": "23c9305f58797ff3e482fe6f8ff60096eada3ffcb4d4cc3df41209b06f1297de"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/CandidateResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/CandidateResource.php",
+            "size": 7141,
+            "hash": "cfd7323d09e6d1af960ff85de39c319c7aec49558f134cf2db1e50c8aed010c2"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ClassGroupResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource.php",
+            "size": 6070,
+            "hash": "1d13642342b3efae12e5c703a0085246812ab5c80eb80407815c3542d536d82e"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/EvaluationResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/EvaluationResource.php",
+            "size": 6644,
+            "hash": "ff6a7b6f73c86b4252cdc24e124577a812897c477b1a72567790bf818fbc2db9"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/GradeResource.php",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/MeetingResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/MeetingResource.php",
+            "size": 7796,
+            "hash": "881ac2785288405fd029a8fc894e460e861eee37077a13841d6b1cc332d8c358"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/PaymentResource"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/PostResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PostResource.php",
+            "size": 4832,
+            "hash": "371bff17d6fd66b0a91894cc2f6cd6a8c75572230fdd51da031e8f8975ce6703"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ReportResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PaymentResource.php",
+            "size": 4701,
+            "hash": "1f0e582338577b339d73a57d64cbcb6edb625fdaff36f1afcaf630b33217d8dd"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ReportResource.php",
+            "size": 2598,
+            "hash": "4eb1735fa1254b45aed8cae6408bef897f95869f5395cade43a67c159eee8e04"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SemesterResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SemesterResource.php",
+            "size": 3489,
+            "hash": "487c1727224a0d26105686d7e1af2af52e4713c5832244571c0b795baa4da3ed"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SiteSettingResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SiteSettingResource.php",
+            "size": 4652,
+            "hash": "c264da6f6209e5f977231c492e79678321e9ce2ca43d6cf4bf137e8de491c5a6"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SubjectResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SubjectResource.php",
+            "size": 0,
+            "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/UserResource"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/UserResource.php",
+            "size": 6930,
+            "hash": "da36464806bd0679ae9834d3813cc4f3065ca79993b71802ef78a1316f88947f"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/AssessmentReportController.php",
+            "size": 6684,
+            "hash": "8ceb8fb10b61ca7a85d9af5ec190d6e6126231ec35a31744601f4b4398e755a1"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Controllers/Auth"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/ContactController.php",
+            "size": 1017,
+            "hash": "abb0d4eb9136b4236f7526147dabf76cd1f55fb3361645c24ee2fda84acc3307"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Controller.php",
+            "size": 77,
+            "hash": "25d1c1ef8e6cc8a376553faacfba2b07d9dfaee9bdbb84f14f77517580e9deb1"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/PaymentController.php",
+            "size": 3033,
+            "hash": "422262675957f73f0f574ed04f4c6c645bd7c52efa497f9d2ad6b0987063519c"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/ProfileController.php",
+            "size": 1416,
+            "hash": "01586a456c9162ecf08234897b47ab29828e67b185e68983932ecc41a76ed355"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/PostController.php",
+            "size": 836,
+            "hash": "80d4d58e168991c2ea9f5f5c0c212c884fb90275b0aac3e114850fe8b801c87b"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/StudentController.php",
+            "size": 3725,
+            "hash": "a048da987a4e2a48e6dd778bd616a405b6ba4362c12d2742bb5cb4d0f8e1a337"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Middleware/EnsureUserIsActive.php",
+            "size": 1148,
+            "hash": "5a0d3b4a595be79e9c7212078cbf7ff9e2fd884f51dc1eeaa0016252dba2db58"
+        },
+        {
+            "type": "folder",
+            "name": "app/Http/Requests/Auth"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Requests/ProfileUpdateRequest.php",
+            "size": 743,
+            "hash": "7d997e86d547969eb113f4d8d636b05a1baa3e0436964cc51a191c14fb38cdb7"
+        },
+        {
+            "type": "file",
+            "name": "app/Providers/Filament/AdminPanelProvider.php",
+            "size": 2522,
+            "hash": "e207767385be3b554ebf0baef8b3f8ab2dc5a5b68063ef2d63e1e19c53d71138"
+        },
+        {
+            "type": "file",
+            "name": "app/View/Components/AppLayout.php",
+            "size": 296,
+            "hash": "c57c4ac36e5603ca09b66674a3a01b427528948ecf1f7a93d06d52818d9319b5"
+        },
+        {
+            "type": "file",
+            "name": "app/View/Components/GuestLayout.php",
+            "size": 300,
+            "hash": "35663740cd39dc5f726b24e402babb41d0af62e09567c0e717235586fa3d9f80"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/assessments/monthly-report-pdf.blade.php",
+            "size": 12312,
+            "hash": "3469bd7c9774c2a2cd49e105086d674ea47dd85770f300687a41a165fcd11fb5"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/assessments/monthly-report.blade.php",
+            "size": 9676,
+            "hash": "9783d6ba41140a8e1b9e4b94fee09c473e36c61e3fb1992683a84db9ca5c9a51"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/assessments/semester-report-pdf.blade.php",
+            "size": 11061,
+            "hash": "f0661f3e30a8cf4ecd4682d48b180c4742d2ef11dddeccc15459fdc31b733a87"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/assessments/semester-report.blade.php",
+            "size": 9240,
+            "hash": "b2f671c89180096a5ef2b5ca116789f9cde8a104bf816a6c6c56377e5628a9fa"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/confirm-password.blade.php",
+            "size": 886,
+            "hash": "9ece17ff21c1386fffb358c88840633a1cd1310646f1bac1cdea8ce644bddac6"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/forgot-password.blade.php",
+            "size": 981,
+            "hash": "125ad1d6cb5abb68b99edc7609503f8d12fca9583dcc1f612a2466866a68701e"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/login.blade.php",
+            "size": 1963,
+            "hash": "3940a74c00cd3e48b223497b159b42cf0bb33aaa0a6af50ba0fe0f98cca8180b"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/register.blade.php",
+            "size": 6307,
+            "hash": "95abeded52f1cce1d40f2a6b52db7d892f4e7520a0e2b800597f438240634c1c"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/reset-password.blade.php",
+            "size": 1646,
+            "hash": "5538223153ebf6c589639ca7c089093f5b91d9edb2eff781d4d4b536d11ef753"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/auth/verify-email.blade.php",
+            "size": 1246,
+            "hash": "f20f99b5f219c7a45317030110b4fd8c3187d04d0273259bf6e81944d91ccd3b"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/application-logo.blade.php",
+            "size": 533,
+            "hash": "9afef287cbaf942c697854698654da5edb539e484c1d66e8c4f0828900707efe"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/auth-session-status.blade.php",
+            "size": 160,
+            "hash": "380b89ba08f51ff4c48c0800a841184fd7d9eebab702803ceb1d2bffb58e5ba8"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/danger-button.blade.php",
+            "size": 380,
+            "hash": "fe2ecafdfdf06bb56590382d6d7d225ab379bd6780fad24e3acc86477b0c082d"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/dropdown-link.blade.php",
+            "size": 217,
+            "hash": "f9efed8927f37b4b1afca34af9924296ba4a85350e77cdbfc26c340c06cd955d"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/dropdown.blade.php",
+            "size": 1244,
+            "hash": "d8d952c42a7f7e0c02e515ff3ceac49e5305a4499402ce0e4e6988cfbacbb026"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/input-error.blade.php",
+            "size": 241,
+            "hash": "69bf80900ce564877e82ca3736a2336549a92afb8650a065be9050a94a599733"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/input-label.blade.php",
+            "size": 143,
+            "hash": "ae90330137ff955f0717de778bd134622926f67807339dda043d27ed2c42da69"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/modal.blade.php",
+            "size": 3205,
+            "hash": "0de169405687f6e304d739b73dcdb87a86c44942ab668129bb0e1ffe13abc767"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/nav-link.blade.php",
+            "size": 605,
+            "hash": "68dd26a311758ea91cd58c4eb5b495929b0b64788b486429d92e34922bfd700a"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/primary-button.blade.php",
+            "size": 404,
+            "hash": "48d3a3b0d0e12960450b6ac3c15d1de54f73e67f2af10e92c5e2b1d5a3a54af5"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/secondary-button.blade.php",
+            "size": 393,
+            "hash": "52266b595818c878ca31ac1c3a3c1ada0977a0e0fb71a9db7da9fb215e5a8932"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/responsive-nav-link.blade.php",
+            "size": 688,
+            "hash": "0ad49bc6202148f9a914d5379154c25f27b43149a0ed2774f38e3047a57e907b"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/components/text-input.blade.php",
+            "size": 184,
+            "hash": "c0609f835d26f47c2c6235b9f845a19fbc29f288b95e4b572c8d0feb5710ee97"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/emails/contact.blade.php",
+            "size": 398,
+            "hash": "ce6db361cd9e4f63c9cf4fb01f47eae40f63c0b53718c632979494c55bbde48b"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/components"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/pages"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/report"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/footer.blade.php",
+            "size": 3391,
+            "hash": "b7b64ab71b27fdf01e9f82b8195cc43bf86dd3cd2b9a0cf21d9ee207791ac1e9"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/guest.blade.php",
+            "size": 1144,
+            "hash": "59520d16ba2824c0a7586c5792dd57501110663ad233bba2a0e62ab4e500523a"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/app.blade.php",
+            "size": 1325,
+            "hash": "e9181d8c606c25efcf5608c6a3f184ce4eb34cdb99f15d8e30540c3d424bf45b"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/header.blade.php",
+            "size": 18308,
+            "hash": "6808a58a5057abbaea39d905fd7f0949795bebcb7a2eb60d14b60dfbddf0f6e7"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/layouts/navigation.blade.php",
+            "size": 5013,
+            "hash": "c571eec74a63da697a8302f98cade89d74798b9177dedcee7d392e974e859f88"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/home.blade.php",
+            "size": 29948,
+            "hash": "3bd6406e0185d9a5d27953fe3f685eca96c405305eb2a28311e3d097e7a21c89"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/student"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/pages/post"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/approval.blade.php",
+            "size": 1968,
+            "hash": "0bf6f718fb00ea2f6238662f2b755bfd1f67c404d365d8a50f52853045c55166"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/profile/edit.blade.php",
+            "size": 969,
+            "hash": "37eecd8407f2580b41e7c8533eeefebfeef9070317f9ac924607aa32a4f0f001"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/profile/partials"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/root/app.blade.php",
+            "size": 1398,
+            "hash": "3844f78f48d35d68213e0e9a31b6c974362304171b9cc8ba0925d5c001e4d147"
+        },
+        {
+            "type": "folder",
+            "name": "storage/framework/cache/data"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/AuthenticationTest.php",
+            "size": 1270,
+            "hash": "08685bdecdf5c6c8050faa59ebbe8ec6ef4204abea7d7493572f541ead16b601"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/EmailVerificationTest.php",
+            "size": 1645,
+            "hash": "ee9fe6e9df4a60968a0857d3a2ea6b5d79248308db0b8a4844ce094c1d89143c"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/PasswordConfirmationTest.php",
+            "size": 1082,
+            "hash": "255e0c8d39d61cde86a497fa845aae4e0a4f593f83d4c3591e8f149e68e696e3"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/PasswordResetTest.php",
+            "size": 1992,
+            "hash": "f75bcd779ca08afdb388e6a7f7abaa1e3c358815a863de5f2ea239b9203ef1b5"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/PasswordUpdateTest.php",
+            "size": 1409,
+            "hash": "b27324ba50657f96d4ae98b15c413e0b0c5c475d84120b983227be70bc6189b2"
+        },
+        {
+            "type": "file",
+            "name": "tests/Feature/Auth/RegistrationTest.php",
+            "size": 751,
+            "hash": "135a9aef837bcc12bfcd82c9b43b80eca7063d7c9687453eb0c10976d062cfbb"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/AssessmentResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ClassGroupResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ClassGroupResource/RelationManagers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/CandidateResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/EvaluationResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/MeetingResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/MeetingResource/RelationManagers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/PaymentResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/PostResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ReportResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/ReportResource/RelationManagers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SemesterResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SemesterResource/RelationManagers"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SiteSettingResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/SubjectResource/Pages"
+        },
+        {
+            "type": "folder",
+            "name": "app/Filament/Resources/UserResource/Pages"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/AuthenticatedSessionController.php",
+            "size": 1038,
+            "hash": "aaea7217b1eeeaa061b07c4e820d995fe180e6816e5866a62295c2f6f0c12f4b"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/ConfirmablePasswordController.php",
+            "size": 1024,
+            "hash": "7322ce4e2ccdf76d1583cd84d27f5708436ffc91d7d00ee7abbde40f3e403ba7"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/EmailVerificationNotificationController.php",
+            "size": 630,
+            "hash": "24d5704b7534ad365800a33e7c537bf63467f1271c4bc801b351c8a05a77e5b9"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/EmailVerificationPromptController.php",
+            "size": 564,
+            "hash": "6b5b4b75fc25c43c1b31106f63f7b1f854b729527b2f5c067f122f4857f85e3a"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/NewPasswordController.php",
+            "size": 2210,
+            "hash": "d8d196f78a9bd72e628a6b209a4d8189b686ed63953d3ca49237cc2ccd6c60da"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/PasswordController.php",
+            "size": 795,
+            "hash": "81f68e0aa74f66038082364499dde9a1b1d93ca961448bd8b46bc77aa17117fd"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/PasswordResetLinkController.php",
+            "size": 1311,
+            "hash": "1ab380b36e411252243f47fec550b992f50e1adb1fc7f116abf8e540d94cd30b"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/RegisteredUserController.php",
+            "size": 2352,
+            "hash": "9916b23b3298389df70956ebf9210d0425906a32b54ccc1c5647168e0b182170"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Controllers/Auth/VerifyEmailController.php",
+            "size": 800,
+            "hash": "5f6080a239709740135d9138085ceb1857c5570a0fea35e62c976fc90929631e"
+        },
+        {
+            "type": "file",
+            "name": "app/Http/Requests/Auth/LoginRequest.php",
+            "size": 2233,
+            "hash": "876169659c8421ca591fc7f62f4cb3a9d541580972ae6d3ac3dcd0727ec628ad"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/components/student-report.blade.php",
+            "size": 5764,
+            "hash": "34f0194966938ce082b38ecd8f1c5c179643ad80e69493609e25421597132391"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/pages/manage-spmb-deadline.blade.php",
+            "size": 298,
+            "hash": "3a8615bf19385b1013face2ba39c0000d56336402514570f8ac094ab56f353c2"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/report/rapor-modal.blade.php",
+            "size": 7632,
+            "hash": "975d7ad05bfbb682d04d901dc99c5278bf6bab8704d7ee8c439c8b7a7cbdd697"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/report/rapor-pdf.blade.php",
+            "size": 8126,
+            "hash": "2d9c9f7af09e2cdb1d6f7aa6f55cffac03ed049d82e4eb89c8a8235d740acbb3"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/class-group-resource"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/report-resource"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/site-setting-resource"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/student/attendance.blade.php",
+            "size": 3498,
+            "hash": "6bd47273536dd087686fa4455dd5004d57ff97930226bae1145d491879aa7684"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/student/dashboard.blade.php",
+            "size": 15923,
+            "hash": "6eec68ad81999a7b0951178e8302e717e2eb30bb6517fa9ce529e6d8425d2057"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/student/transcript.blade.php",
+            "size": 2717,
+            "hash": "97953aca41c604ff2856acdd8f56c28facb2bc5bf21794c65b11e075f8b7b111"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/pages/post/show.blade.php",
+            "size": 7581,
+            "hash": "7e630bb038829cb2b40cc10d6b3d13f9cf5bda69e323cda2b65e6d2d06b59a1a"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/profile/partials/delete-user-form.blade.php",
+            "size": 2140,
+            "hash": "7d2991ebd38ee627620c6a95a7f58cc5b4c408fa279e460d108baa7663bee33c"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/profile/partials/update-password-form.blade.php",
+            "size": 2118,
+            "hash": "1838f20b3d1b16c8d85ac4d3a87c2e7dd940a8b2484d68463a01b242f891cd98"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/profile/partials/update-profile-information-form.blade.php",
+            "size": 2674,
+            "hash": "bb9a00ce8885915857508106b5451ff69a809c09d05c8bf5ac6752f1e4e3d58f"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/AssessmentResource/Pages/CreateAssessment.php",
+            "size": 410,
+            "hash": "5700171a48a5c6885839f41d7f230205639a1315ac7fe02ebf80166b1d79f429"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/AssessmentResource/Pages/EditAssessment.php",
+            "size": 421,
+            "hash": "1634ecd9627662acfdb031d48a66a6f40fcdf654b332a47e6ab13c45df33e348"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/AssessmentResource/Pages/ListAssessments.php",
+            "size": 424,
+            "hash": "27a00e99dd0aac6bdc9c3fb914051f4bffccc284631cef0db41ec036902187f8"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource/Pages/EditClassGroup.php",
+            "size": 461,
+            "hash": "33fd136648912650fb295435b1aa2644a38669bdda25ae9fe675d1c1c4636ab5"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource/Pages/CreateClassGroup.php",
+            "size": 410,
+            "hash": "a1ded6df67e6a1fa1f961e76ed84a59702cf8db898728fea6b7b4884a0ba7901"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource/Pages/ListClassGroups.php",
+            "size": 424,
+            "hash": "5878cfcdd212f4092b706cf31781f680f5883a122c2d9cfbbb275f2c8dc4188e"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource/Pages/ViewClassGroup.php",
+            "size": 451,
+            "hash": "78ee3a91f123e856a7cdfa1df706242079825a58493835c02ae73b0086cd24f9"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/CandidateResource/Pages/CreateCandidate.php",
+            "size": 406,
+            "hash": "6fc12f95ec42868eae0d2312ba0516e27a2c608a57743f84fa5b2181efa9ed18"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ClassGroupResource/RelationManagers/StudentsRelationManager.php",
+            "size": 4301,
+            "hash": "3129dcdb240710f8131f81219029f011b8557dfc45cbc5794f395e1bac4566ff"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/CandidateResource/Pages/EditCandidate.php",
+            "size": 417,
+            "hash": "8fc0fe28dfb44830558c2d135a5ee44cb1b0573bc5204846c2b7c6fc0113f294"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/CandidateResource/Pages/ListCandidates.php",
+            "size": 420,
+            "hash": "e6bfd52ef2fc6a5cf28c9d2c496b4e8b84d987410945b0b7c6bfb27585f214d3"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/EvaluationResource/Pages/CreateEvaluation.php",
+            "size": 1263,
+            "hash": "4e73bec5e619d1e1ad9f9fa48b46201ca2b90fa8cc036b3770a7d77733876db1"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/EvaluationResource/Pages/EditEvaluation.php",
+            "size": 421,
+            "hash": "59e7a8d6c458c5f87a1745b79c16db7fa9ca57aab25f0b3605125b6aa883388e"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/EvaluationResource/Pages/ListEvaluations.php",
+            "size": 424,
+            "hash": "d9f4fe0f90033c80da16cffc9d8386e573042a0472ed7198a69a19a8a6b52257"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/MeetingResource/Pages/CreateMeeting.php",
+            "size": 1355,
+            "hash": "75d1bdaf579c0ea1ee2d0c7719cb1b185452a2f498a1f6214e542c9ffda30c1d"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/MeetingResource/Pages/EditMeeting.php",
+            "size": 409,
+            "hash": "d8de3e6d5b62030623ea4a4ed2c9b9c9c13252289889f802eeb0eaf38dea02b4"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/MeetingResource/Pages/ListMeetings.php",
+            "size": 412,
+            "hash": "3e00df70f670f7c0e20059adacd94b5a105e425797773927fe044b775b4fcec8"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/MeetingResource/RelationManagers/AttendancesRelationManager.php",
+            "size": 4619,
+            "hash": "f8803f1b09486ac0c5acd09ce243ef13b5eb775564cdc0d8dcaaefb5e818c32d"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PaymentResource/Pages/CreatePayment.php",
+            "size": 398,
+            "hash": "86a22ad42ec11b7ae30cf8d5ebe9695bb43c2a8f0f267ab98a86007cf1613ff3"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PaymentResource/Pages/EditPayment.php",
+            "size": 409,
+            "hash": "12ae1485a76b936f6885827898b4bfe36219df8a2c957ef1c23a566d52bb7b90"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PaymentResource/Pages/ListPayments.php",
+            "size": 412,
+            "hash": "917080273c70414199c7ce49a2ed064eecf60f484676c4c5161566499ee53630"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PostResource/Pages/CreatePost.php",
+            "size": 386,
+            "hash": "eb7a4efa07548eb7fef97d4300fb750bd3d0e06f7ac2f0c6a27405347a850d06"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PostResource/Pages/EditPost.php",
+            "size": 397,
+            "hash": "28c69b5d1980ac90b2944334cd7c188115e019022f1b06bf87bf6b9c1a151b17"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/PostResource/Pages/ListPosts.php",
+            "size": 400,
+            "hash": "ceda08d56b6391c409a0da348cfe9b7c54825e7e9008a442d528fdc58ca882d9"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ReportResource/Pages/ListReports.php",
+            "size": 360,
+            "hash": "ae06adc6f8f8cc843dcdbdbb08bcedf90f12f154b93761c93522041556d2607d"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ReportResource/Pages/ViewReport.php",
+            "size": 403,
+            "hash": "12bb374d699f7470a35a09814587377459aeb83ca574fe57c5a752b3247d563d"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/ReportResource/RelationManagers/StudentsRelationManager.php",
+            "size": 3695,
+            "hash": "59d2e528fba2bc48636646d02be78a2b1cb9a57a2596bf1f4925db7ebe71b0ad"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SemesterResource/Pages/CreateSemester.php",
+            "size": 402,
+            "hash": "fff3e129f059d990a313aceaccda9f3e8642f01a9fdee0ad914750018afaf5d5"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SemesterResource/Pages/EditSemester.php",
+            "size": 413,
+            "hash": "1b426486fb2ea013a901bb48246f0271dba7308c3da599039629b7b973e4a1c7"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SemesterResource/Pages/ListSemesters.php",
+            "size": 416,
+            "hash": "a1b1fbbb195adad060560723bc0bd497fb89af8a9b4dcc29a318bb3856d2273a"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SemesterResource/RelationManagers/PaymentsRelationManager.php",
+            "size": 5705,
+            "hash": "e102e55635780ea5f1343384029b8e44b63542e00e41aadfbc5493f219a5814c"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SiteSettingResource/Pages/EditSiteSetting.php",
+            "size": 425,
+            "hash": "aadc1c9b6d9305d4710bf49d076673353ac788f709610b5da640e01286e9eff1"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SiteSettingResource/Pages/ListSiteSettings.php",
+            "size": 711,
+            "hash": "dc57e37be205654f26d3329cbe512bb8fc33d3b87e1b9aad54a87a4c6d5d6b55"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SiteSettingResource/Pages/CreateSiteSetting.php",
+            "size": 414,
+            "hash": "15a553411570178710b2dff5245c5127a10d3cbaa9c407d1a2efd73f8d459f07"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SiteSettingResource/Pages/ManageSPMBDeadline.php",
+            "size": 4112,
+            "hash": "4845f66894f5adc04380a6dacd4887842eb743aae55e6520c4db875e4b3649b0"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SubjectResource/Pages/CreateSubject.php",
+            "size": 398,
+            "hash": "c4e7b5e8782850589ad722baf58247b6bf0caaa856490aea4475b6a3d6a2a52b"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SubjectResource/Pages/EditSubject.php",
+            "size": 409,
+            "hash": "fed65c8cd2c614f5abdfb49cf8a0b2b88247f1bf08b11c9fc67ca81e4b91df92"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/SubjectResource/Pages/ListSubjects.php",
+            "size": 412,
+            "hash": "dcdd9dbe7183f353096d63b249283ec3f85a17b1abec1cdee386db9b665ce4a6"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/UserResource/Pages/CreateUser.php",
+            "size": 386,
+            "hash": "ae9c0ea4f804b1411db180d5198ce0bec90c1b8347a7e255a9f797075446c3a3"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/UserResource/Pages/EditUser.php",
+            "size": 397,
+            "hash": "a27776cb08e303fb05ad812ae94c381be7d6c9d98e0ca4959f9b1e46eeb7c571"
+        },
+        {
+            "type": "file",
+            "name": "app/Filament/Resources/UserResource/Pages/ListUsers.php",
+            "size": 400,
+            "hash": "6fb2f8de6d768e7b71a3ddfc4acba1dac8730528e875c29fe888670dd072d2a0"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/class-group-resource/pages"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/report-resource/pages"
+        },
+        {
+            "type": "folder",
+            "name": "resources/views/filament/resources/site-setting-resource/pages"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/resources/class-group-resource/pages/view-class-group.blade.php",
+            "size": 1309,
+            "hash": "db8caab9061c6bd53c02f28c97aabda8dbfce933c81c0618b056014824fc44da"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/resources/report-resource/pages/view-report.blade.php",
+            "size": 1468,
+            "hash": "c747a31df54e3e126f31cda3d06d4838e2f37953048f84c959d7278d95dfbe4a"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/resources/site-setting-resource/pages/manage-spmb-deadline.blade.php",
+            "size": 298,
+            "hash": "3a8615bf19385b1013face2ba39c0000d56336402514570f8ac094ab56f353c2"
+        },
+        {
+            "type": "file",
+            "name": "resources/views/filament/resources/site-setting-resource/pages/spmb-info.blade.php",
+            "size": 1146,
+            "hash": "66dd411cf65f2b5092fed839515031d65a82c3f0d86bb50f6c2ddaf13d0d2630"
+        }
+    ]
+}

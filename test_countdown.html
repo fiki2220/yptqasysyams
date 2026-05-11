@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Countdown SPMB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="p-8 bg-gray-100">
+    <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold mb-6 text-center">Test Countdown SPMB</h1>
+
+        <!-- Test Countdown -->
+        <div class="mb-8"
+             x-data="initCountdown('2026-12-31T23:59:00')"
+             x-init="startCountdown()">
+
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Countdown Test:</h3>
+
+            <div class="flex justify-center gap-4 text-center">
+                <!-- Days -->
+                <div class="flex flex-col">
+                    <span class="text-4xl font-mono font-bold text-gray-800" x-text="days">00</span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Hari</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-300 self-start mt-1">:</div>
+
+                <!-- Hours -->
+                <div class="flex flex-col">
+                    <span class="text-4xl font-mono font-bold text-gray-800" x-text="hours">00</span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Jam</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-300 self-start mt-1">:</div>
+
+                <!-- Minutes -->
+                <div class="flex flex-col">
+                    <span class="text-4xl font-mono font-bold text-gray-800" x-text="minutes">00</span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Menit</span>
+                </div>
+                <div class="text-2xl font-bold text-gray-300 self-start mt-1">:</div>
+
+                <!-- Seconds -->
+                <div class="flex flex-col">
+                    <span class="text-4xl font-mono font-bold text-gray-800" x-text="seconds">00</span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide">Detik</span>
+                </div>
+            </div>
+
+            <p class="text-sm text-gray-600 mt-4">
+                Deadline: 31 Desember 2026, 23:59 WIB
+            </p>
+        </div>
+
+        <!-- Debug Info -->
+        <div class="bg-gray-50 p-4 rounded">
+            <h4 class="font-semibold mb-2">Debug Info:</h4>
+            <p class="text-sm text-gray-600">
+                Jika countdown tidak berjalan, cek:
+            </p>
+            <ul class="text-sm text-gray-600 list-disc list-inside mt-2">
+                <li>AlpineJS ter-load (lihat console)</li>
+                <li>Format tanggal benar (YYYY-MM-DDTHH:mm:ss)</li>
+                <li>Browser mendukung AlpineJS</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Script Countdown AlpineJS -->
+    <script>
+        function initCountdown(expiryStr) {
+            return {
+                days: '00',
+                hours: '00',
+                minutes: '00',
+                seconds: '00',
+                expiryTime: 0,
+
+                startCountdown() {
+                    // Parse tanggal deadline
+                    try {
+                        // Coba format ISO: YYYY-MM-DDTHH:mm:ss
+                        this.expiryTime = new Date(expiryStr).getTime();
+
+                        // Jika gagal, coba format lain
+                        if (isNaN(this.expiryTime)) {
+                            this.expiryTime = new Date(expiryStr.replace(' ', 'T')).getTime();
+                        }
+
+                        // Log untuk debug
+                        console.log('Deadline: ' + expiryStr);
+                        console.log('Parsed time: ' + this.expiryTime);
+                        console.log('Current time: ' + new Date().getTime());
+                    } catch (e) {
+                        console.error('Error parsing date:', e);
+                    }
+
+                    // Update countdown immediately
+                    this.updateCountdown();
+
+                    // Update setiap 1 detik
+                    setInterval(() => {
+                        this.updateCountdown();
+                    }, 1000);
+                },
+
+                updateCountdown() {
+                    const now = new Date().getTime();
+                    const diff = this.expiryTime - now;
+
+                    if (diff > 0) {
+                        this.days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                        this.hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                        this.minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                        this.seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+                    } else {
+                        this.days = '00';
+                        this.hours = '00';
+                        this.minutes = '00';
+                        this.seconds = '00';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

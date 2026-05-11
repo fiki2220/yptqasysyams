@@ -1,0 +1,273 @@
+@extends('root.app')
+
+@section('title', 'Dashboard - YPTQ Asy-Syams')
+
+@section('content')
+
+{{-- ========================================== --}}
+{{--              TAMPILAN USTAD                --}}
+{{-- ========================================== --}}
+@if(Auth::user()->role === 'admin' || Auth::user()->role === 'superadmin')
+    
+    <div class="bg-gray-50 min-h-screen pb-12">
+        <!-- Header Ustad -->
+        <div class="bg-green-800 pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl font-bold text-white">
+                    Ahlan Wa Sahlan, Ustadz {{ Auth::user()->name }}
+                </h1>
+                <p class="text-green-200 mt-2">
+                    Selamat beraktivitas! Kelola kegiatan belajar mengajar Anda di sini.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16">
+            
+            <!-- Quick Actions Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Card 1: Shortcut ke Admin Panel -->
+                <a href="{{ url('/admin') }}" target="_blank" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition border-l-4 border-green-600 group">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-green-100 text-green-700 rounded-full group-hover:bg-green-600 group-hover:text-white transition">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Panel Admin</h3>
+                            <p class="text-sm text-gray-500">Masuk ke menu lengkap</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card 2: Total Pertemuan -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-blue-100 text-blue-600 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Total Mengajar</h3>
+                            <p class="text-sm text-gray-500">{{ $totalMeetings ?? 0 }} Pertemuan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Logout -->
+                <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-red-500 cursor-pointer" onclick="document.getElementById('logout-form').submit()">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-red-100 text-red-600 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Keluar</h3>
+                            <p class="text-sm text-gray-500">Logout Sistem</p>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">@csrf</form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- JADWAL HARI INI & ABSENSI -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="px-6 py-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                    <h2 class="text-lg font-bold text-gray-800">📅 Jadwal Mengajar Hari Ini ({{ date('d M Y') }})</h2>
+                    <a href="{{ url('/admin/meetings/create') }}" class="text-sm text-white bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                        + Buat Pertemuan Baru
+                    </a>
+                </div>
+                
+                @if(isset($todayClasses) && count($todayClasses) > 0)
+                    <div class="divide-y divide-gray-100">
+                        @foreach($todayClasses as $class)
+                        <div class="p-6 flex items-center justify-between hover:bg-gray-50 transition">
+                            <div>
+                                <h3 class="text-lg font-bold text-green-700">{{ $class->subject->name }}</h3>
+                                <p class="text-gray-600">{{ $class->title }}</p>
+                                <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded mt-1 inline-block">
+                                    {{ $class->created_at->format('H:i') }} WIB
+                                </span>
+                            </div>
+                            
+                            <a href="{{ url('/admin/meetings/'.$class->id.'/edit') }}" 
+                               target="_blank"
+                               class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                Isi Absensi
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="p-10 text-center">
+                        <div class="inline-block p-4 rounded-full bg-gray-100 text-gray-400 mb-3">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-gray-900">Tidak ada jadwal hari ini</h3>
+                        <p class="text-gray-500">Silakan buat pertemuan baru jika ingin mengajar.</p>
+                    </div>
+                @endif
+            </div>
+
+        </div>
+    </div>
+
+
+{{-- ========================================== --}}
+{{--              TAMPILAN SISWA                --}}
+{{-- ========================================== --}}
+@else
+
+    <!-- SCRIPT MIDTRANS (Wajib Ada - Hanya load utk Siswa) -->
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+
+    <div class="bg-gray-50 min-h-screen pb-12">
+        <!-- Header Welcome -->
+        <div class="bg-green-700 pb-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl font-bold text-white">
+                    Ahlan Wa Sahlan, {{ Auth::user()->name }}
+                </h1>
+                <p class="text-green-100 mt-2">
+                    NISN: {{ Auth::user()->nisn ?? '-' }} | Semangat menuntut ilmu hari ini!
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16">
+            
+            <!-- ALERT STATUS PEMBAYARAN -->
+            @if(isset($activeSemester) && $activeSemester)
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8 border-l-4 {{ in_array($paymentStatus, ['success', 'paid']) ? 'border-green-500' : 'border-red-500' }} fade-in-section">
+                    <div class="flex items-center justify-between flex-col md:flex-row gap-4">
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-800">Tagihan Semester: {{ $activeSemester->name }}</h2>
+                            <p class="text-gray-600">Total Tagihan: <span class="font-bold">Rp {{ number_format($billAmount, 0, ',', '.') }}</span></p>
+                            
+                            <div class="mt-2">
+                                Status: 
+                                @if(in_array($paymentStatus, ['success', 'paid']))
+                                    <span class="px-2 py-1 text-xs font-bold rounded bg-green-100 text-green-800">LUNAS</span>
+                                @elseif($paymentStatus == 'pending')
+                                    <span class="px-2 py-1 text-xs font-bold rounded bg-yellow-100 text-yellow-800">MENUNGGU PEMBAYARAN</span>
+                                @else
+                                    <span class="px-2 py-1 text-xs font-bold rounded bg-red-100 text-red-800">BELUM DIBAYAR</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        @if(!in_array($paymentStatus, ['success', 'paid']))
+                            <button id="pay-button" class="w-full md:w-auto px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition shadow-lg animate-pulse">
+                                Bayar Sekarang
+                            </button>
+                        @else
+                             <button disabled class="w-full md:w-auto px-6 py-3 bg-gray-100 text-gray-400 font-bold rounded-lg cursor-not-allowed">
+                                Sudah Lunas
+                            </button>
+                        @endif
+                    </div>
+                </div>
+            @else
+                <div class="bg-white rounded-lg shadow p-6 mb-8 border-l-4 border-gray-400">
+                    <p class="text-gray-600">Tidak ada semester aktif saat ini.</p>
+                </div>
+            @endif
+
+            <!-- MENU GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-section">
+                
+                <!-- Card Akademik -->
+                <a href="{{ route('student.transcript') }}" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-all border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-blue-100 text-blue-600 rounded-full group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Transkrip Nilai</h3>
+                            <p class="text-sm text-gray-500">Lihat Nilai</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card Absensi -->
+                <a href="{{ route('student.attendance') }}" class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-all border border-gray-100 group">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-purple-100 text-purple-600 rounded-full group-hover:scale-110 transition-transform">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Riwayat Absensi</h3>
+                            <p class="text-sm text-gray-500">Cek Kehadiran</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Card Profil -->
+                <div class="bg-white rounded-lg shadow p-6 border border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-gray-100 text-gray-600 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Profil Saya</h3>
+                            <form method="POST" action="{{ route('logout') }}" class="mt-1">
+                                @csrf
+                                <button type="submit" class="text-sm text-red-600 hover:text-red-800 font-medium">
+                                    Keluar (Logout)
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIKA PEMBAYARAN (Khusus Siswa) -->
+    <script type="text/javascript">
+        var payButton = document.getElementById('pay-button');
+        if(payButton) {
+            payButton.onclick = function () {
+                // Ubah tombol jadi Loading
+                payButton.innerHTML = 'Memproses...';
+                payButton.disabled = true;
+
+                // Panggil API Backend kita
+                fetch('{{ route("payment.checkout") }}')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Munculkan Popup Midtrans
+                        window.snap.pay(data.snap_token, {
+                            onSuccess: function(result){
+                                // Redirect ke halaman sukses
+                                window.location.href = "{{ route('payment.success') }}?order_id=" + result.order_id;
+                            },
+                            onPending: function(result){
+                                alert("Menunggu pembayaran!");
+                                location.reload();
+                            },
+                            onError: function(result){
+                                alert("Pembayaran gagal!");
+                                location.reload();
+                            },
+                            onClose: function(){
+                                alert('Anda menutup popup tanpa menyelesaikan pembayaran');
+                                location.reload();
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan sistem.');
+                        payButton.innerHTML = 'Bayar Sekarang';
+                        payButton.disabled = false;
+                    });
+            };
+        }
+    </script>
+
+@endif
+
+@endsection
