@@ -77,6 +77,10 @@ Route::get('/approval', function () {
     return view('pages.approval');
 })->middleware(['auth'])->name('approval.notice');
 
+Route::get('/access-denied', function () {
+    return view('pages.access-denied');
+})->middleware(['auth'])->name('access.denied');
+
 // 4. HALAMAN KHUSUS USER LOGIN (SISWA/USTAD)
 Route::middleware(['auth', 'verified', 'is_active'])->group(function () {
     
@@ -84,11 +88,19 @@ Route::middleware(['auth', 'verified', 'is_active'])->group(function () {
     Route::get('/dashboard', [StudentController::class, 'dashboard'])->name('dashboard');
 
     // Fitur Siswa
-    Route::get('/transcript', [StudentController::class, 'transcript'])->name('student.transcript');
-    Route::get('/attendance', [StudentController::class, 'attendance'])->name('student.attendance');
+    Route::get('/transcript', [StudentController::class, 'transcript'])
+        ->middleware('permission:reports.view')
+        ->name('student.transcript');
+
+    Route::get('/attendance', [StudentController::class, 'attendance'])
+        ->middleware('permission:dashboard.view')
+        ->name('student.attendance');
 
     // Payment Midtrans
-    Route::get('/payment/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
+    Route::get('/payment/checkout', [PaymentController::class, 'checkout'])
+        ->middleware('permission:payments.manage')
+        ->name('payment.checkout');
+
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
 
     // Profile Bawaan
@@ -107,20 +119,12 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 
 // Route Cetak Rapor Santri PDF
 Route::get('/rapor-pdf/{class_group}/{user}', function(App\Models\ClassGroup $class_group, App\Models\User $user) {
-    if (!auth()->check()) {
-        abort(403);
-    }
-
-    if (! auth()->user()->hasAccess('reports.download')) {
-        abort(403);
-    }
-
     $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('filament.report.rapor-pdf', [
         'student' => $user,
         'classGroup' => $class_group
     ]);
     return $pdf->stream('Rapor-' . Str::slug($user->name) . '.pdf');
-})->name('rapor.pdf');
+})->middleware(['auth', 'permission:reports.download'])->name('rapor.pdf');
 
 // ===== TEMPORARY: CHECK DATABASE (HAPUS SETELAH DIGUNAKAN) =====
 Route::get('/check-db', function () {

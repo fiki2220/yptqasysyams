@@ -6,7 +6,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Cache;
 
 // --- 1. TAMBAHAN IMPORT FILAMENT ---
 use Filament\Models\Contracts\FilamentUser;
@@ -16,6 +15,40 @@ use Filament\Panel;
 class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
+
+    public const PANEL_PERMISSIONS = [
+        'dashboard.view',
+        'panel.access',
+        'users.manage',
+        'spmb.manage',
+        'classes.manage',
+        'meetings.manage',
+        'attendances.manage',
+        'assessments.manage',
+        'evaluations.manage',
+        'grades.manage',
+        'reports.view',
+        'reports.download',
+        'payments.manage',
+        'posts.manage',
+        'settings.manage',
+    ];
+
+    public const FILAMENT_FALLBACK_ROUTES = [
+        'dashboard.view' => 'dashboard',
+        'classes.manage' => 'filament.admin.resources.class-groups.index',
+        'meetings.manage' => 'filament.admin.resources.meetings.index',
+        'attendances.manage' => 'filament.admin.resources.meetings.index',
+        'assessments.manage' => 'filament.admin.resources.assessments.index',
+        'evaluations.manage' => 'filament.admin.resources.evaluations.index',
+        'grades.manage' => 'filament.admin.resources.grades.index',
+        'reports.view' => 'filament.admin.resources.raport.index',
+        'payments.manage' => 'filament.admin.resources.payments.index',
+        'posts.manage' => 'filament.admin.resources.posts.index',
+        'spmb.manage' => 'filament.admin.resources.candidates.index',
+        'settings.manage' => 'filament.admin.resources.site-settings.index',
+        'users.manage' => 'filament.admin.resources.users.index',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -132,15 +165,51 @@ class User extends Authenticatable implements FilamentUser
             return false;
         }
 
-        return Cache::remember(
-            "role_permission:{$this->role}:{$permission}",
-            now()->addMinutes(10),
-            fn (): bool => RolePermission::query()
-                ->where('role', $this->role)
-                ->where('permission', $permission)
-                ->where('is_allowed', true)
-                ->exists()
-        );
+        return RolePermission::query()
+            ->where('role', $this->role)
+            ->where('permission', $permission)
+            ->where('is_allowed', true)
+            ->exists();
+    }
+
+    public function hasAnyAccess(array $permissions): bool
+    {
+        if ($this->role === 'superadmin') {
+            return true;
+        }
+
+        if (! in_array($this->role, ['guru', 'student'], true)) {
+            return false;
+        }
+
+        return RolePermission::query()
+            ->where('role', $this->role)
+            ->whereIn('permission', $permissions)
+            ->where('is_allowed', true)
+            ->exists();
+    }
+
+    public function getFirstAllowedFilamentRoute(): ?string
+    {
+        if ($this->role === 'superadmin') {
+            return route('filament.admin.home');
+        }
+
+        if ($this->role === 'student') {
+            return route('dashboard');
+        }
+
+        if ($this->role !== 'guru') {
+            return null;
+        }
+
+        foreach (self::FILAMENT_FALLBACK_ROUTES as $permission => $routeName) {
+            if ($this->hasAccess($permission) && app('router')->has($routeName)) {
+                return route($routeName);
+            }
+        }
+
+        return null;
     }
 
     // --- 3. FUNGSI WAJIB FILAMENT UNTUK IZIN MASUK ---
@@ -151,6 +220,6 @@ class User extends Authenticatable implements FilamentUser
         }
 
         return $this->role === 'guru'
-            && ($this->hasAccess('dashboard.view') || $this->hasAccess('panel.access'));
+            && $this->hasAnyAccess(self::PANEL_PERMISSIONS);
     }
 }
