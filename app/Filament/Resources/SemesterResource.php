@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 
 class SemesterResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Semester::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar';
@@ -19,6 +21,11 @@ class SemesterResource extends Resource
     protected static ?string $navigationGroup = 'Master Data';
 
     protected static ?string $navigationLabel = 'Periode Semester';
+
+    protected static function permission(): string
+    {
+        return 'settings.manage';
+    }
 
     public static function form(Form $form): Form
     {

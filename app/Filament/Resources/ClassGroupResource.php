@@ -16,6 +16,8 @@ use Illuminate\Support\Str;
 
 class ClassGroupResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = ClassGroup::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
@@ -27,6 +29,11 @@ class ClassGroupResource extends Resource
     protected static ?string $pluralLabel = 'Kelola Kelas';
 
     protected static ?int $navigationSort = 1;
+
+    protected static function permission(): string
+    {
+        return 'classes.manage';
+    }
 
     public static function form(Form $form): Form
     {
@@ -65,7 +72,7 @@ class ClassGroupResource extends Resource
 
                     Forms\Components\Select::make('teacher_id')
                         ->label('Ustad / Pengajar')
-                        ->options(User::where('role', '!=', 'student')->pluck('name', 'id'))
+                        ->options(User::whereIn('role', ['superadmin', 'guru'])->pluck('name', 'id'))
                         ->searchable()
                         ->nullable(),
 

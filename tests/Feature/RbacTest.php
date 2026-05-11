@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use App\Models\RolePermission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,8 +27,20 @@ class RbacTest extends TestCase
     public function test_ustad_can_access_admin_panel(): void
     {
         $ustad = User::factory()->create([
-            'role' => 'admin',
+            'role' => 'guru',
             'is_active' => true,
+        ]);
+
+        RolePermission::create([
+            'role' => 'guru',
+            'permission' => 'dashboard.view',
+            'is_allowed' => true,
+        ]);
+
+        RolePermission::create([
+            'role' => 'guru',
+            'permission' => 'meetings.manage',
+            'is_allowed' => true,
         ]);
 
         $this->actingAs($ustad);

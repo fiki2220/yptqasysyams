@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Auth;
 
 class PostResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Post::class;
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
     protected static ?string $navigationGroup = 'Publikasi';
     protected static ?string $navigationLabel = 'Berita & Artikel';
     protected static ?string $label = 'Berita & Artikel';
     protected static ?string $pluralLabel = 'Berita & Artikel';
+
+    protected static function permission(): string
+    {
+        return 'posts.manage';
+    }
+
     public static function form(Form $form): Form
     {
         return $form

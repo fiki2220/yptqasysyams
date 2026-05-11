@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Cache;
 
 class AssessmentResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Assessment::class;
     protected static ?string $navigationIcon = 'heroicon-o-document-check';
     protected static ?string $navigationGroup = 'Akademik (Ustad)';
@@ -22,6 +24,12 @@ class AssessmentResource extends Resource
     protected static ?int $navigationSort = 2;
     protected static ?string $label = 'Input Penilaian';
     protected static ?string $pluralLabel = 'Input Penilaian';
+
+    protected static function permission(): string
+    {
+        return 'assessments.manage';
+    }
+
     /**
      * Helper untuk mengambil data surat dari API equran.id
      */

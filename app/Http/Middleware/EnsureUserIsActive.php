@@ -17,8 +17,8 @@ class EnsureUserIsActive
         // 1. Cek apakah user sudah login?
         if (Auth::check()) {
             
-            // 2. Jika Role Admin/Superadmin, bebaskan saja (biar gak kekunci sendiri)
-            if(Auth::user()->role === 'admin' || Auth::user()->role === 'superadmin') {
+            // 2. Jika Role Guru/Superadmin, bebaskan saja (biar gak kekunci sendiri)
+            if(Auth::user()->role === 'guru' || Auth::user()->role === 'superadmin') {
                 return $next($request);
             }
 

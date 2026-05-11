@@ -19,8 +19,8 @@ class AssessmentReportController extends Controller
     {
         $user = Auth::user();
         
-        // Jika bukan admin/ustad, redirect
-        if (!in_array($user->role, ['admin', 'superadmin'])) {
+        // Jika bukan guru/superadmin, redirect
+        if (! $user->hasAccess('reports.view')) {
             abort(403);
         }
 
@@ -37,8 +37,8 @@ class AssessmentReportController extends Controller
         if ($classGroupId) {
             $query->where('class_group_id', $classGroupId);
         } else {
-            // Jika ustad, hanya lihat kelas mereka
-            if ($user->role === 'admin') {
+            // Jika guru, hanya lihat kelas mereka
+            if ($user->role === 'guru') {
                 $query->whereHas('classGroup', function ($q) use ($user) {
                     $q->where('teacher_id', $user->id);
                 });
@@ -83,7 +83,7 @@ class AssessmentReportController extends Controller
     {
         $user = Auth::user();
         
-        if (!in_array($user->role, ['admin', 'superadmin'])) {
+        if (! $user->hasAccess('reports.download')) {
             abort(403);
         }
 
@@ -98,7 +98,7 @@ class AssessmentReportController extends Controller
         if ($classGroupId) {
             $query->where('class_group_id', $classGroupId);
         } else {
-            if ($user->role === 'admin') {
+            if ($user->role === 'guru') {
                 $query->whereHas('classGroup', function ($q) use ($user) {
                     $q->where('teacher_id', $user->id);
                 });
@@ -122,7 +122,7 @@ class AssessmentReportController extends Controller
     {
         $user = Auth::user();
         
-        if (!in_array($user->role, ['admin', 'superadmin'])) {
+        if (! $user->hasAccess('reports.view')) {
             abort(403);
         }
 
@@ -148,7 +148,7 @@ class AssessmentReportController extends Controller
         if ($classGroupId) {
             $query->where('class_group_id', $classGroupId);
         } else {
-            if ($user->role === 'admin') {
+            if ($user->role === 'guru') {
                 $query->whereHas('classGroup', function ($q) use ($user) {
                     $q->where('teacher_id', $user->id);
                 });
@@ -175,7 +175,7 @@ class AssessmentReportController extends Controller
     {
         $user = Auth::user();
         
-        if (!in_array($user->role, ['admin', 'superadmin'])) {
+        if (! $user->hasAccess('reports.download')) {
             abort(403);
         }
 

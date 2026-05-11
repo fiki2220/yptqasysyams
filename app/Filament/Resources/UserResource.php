@@ -23,6 +23,36 @@ class UserResource extends Resource
 
     protected static ?string $navigationLabel = 'Data Pengguna';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return static::canViewAny();
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()?->hasAccess('users.manage') ?? false;
+    }
+
+    public static function canCreate(): bool
+    {
+        return static::canViewAny();
+    }
+
+    public static function canEdit($record): bool
+    {
+        return static::canViewAny();
+    }
+
+    public static function canDelete($record): bool
+    {
+        return static::canViewAny();
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return static::canViewAny();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -50,7 +80,7 @@ class UserResource extends Resource
                         Forms\Components\Select::make('role')
                             ->options([
                                 'superadmin' => 'Super Admin (Developer)',
-                                'admin' => 'Admin (Ustad)',
+                                'guru' => 'Guru',
                                 'student' => 'Siswa (Santri)',
                             ])
                             ->required()
@@ -103,8 +133,9 @@ class UserResource extends Resource
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
                         'superadmin' => 'danger',
-                        'admin' => 'warning',
+                        'guru' => 'warning',
                         'student' => 'success',
+                        default => 'gray',
                     }),
 
                 Tables\Columns\TextColumn::make('email')
@@ -126,7 +157,7 @@ class UserResource extends Resource
                 Tables\Filters\SelectFilter::make('role')
                     ->options([
                         'superadmin' => 'Superadmin',
-                        'admin' => 'Ustad',
+                        'guru' => 'Guru',
                         'student' => 'Siswa',
                     ]),
             ])
@@ -172,7 +203,7 @@ class UserResource extends Resource
                 ->icon('heroicon-o-academic-cap')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('role', 'student')->where('is_active', true)),
                 
-            'teachers' => Tab::make('Ustad & Admin')
+            'teachers' => Tab::make('Guru')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('role', '!=', 'student')),
         ];
     }

@@ -13,6 +13,8 @@ use Filament\Tables\Table;
 
 class EvaluationResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Evaluation::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
@@ -23,6 +25,11 @@ class EvaluationResource extends Resource
     protected static ?string $label = 'Input Evaluasi';
     protected static ?string $pluralLabel = 'Input Evaluasi';
     protected static ?int $navigationSort = 3;
+
+    protected static function permission(): string
+    {
+        return 'evaluations.manage';
+    }
 
     public static function form(Form $form): Form
     {

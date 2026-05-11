@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Filament\Resources\MeetingResource\Pages\CreateMeeting;
 use App\Models\ClassGroup;
 use App\Models\Meeting;
+use App\Models\RolePermission;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
@@ -18,8 +19,20 @@ class AttendanceTest extends TestCase
     {
         // 1. Buat Ustad
         $ustad = User::factory()->create([
-            'role' => 'admin', 
+            'role' => 'guru', 
             'is_active' => true
+        ]);
+
+        RolePermission::create([
+            'role' => 'guru',
+            'permission' => 'dashboard.view',
+            'is_allowed' => true,
+        ]);
+
+        RolePermission::create([
+            'role' => 'guru',
+            'permission' => 'meetings.manage',
+            'is_allowed' => true,
         ]);
 
         // 2. Buat Class Group dan Santri

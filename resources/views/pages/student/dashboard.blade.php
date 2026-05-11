@@ -7,7 +7,7 @@
 {{-- ========================================== --}}
 {{--              TAMPILAN USTAD                --}}
 {{-- ========================================== --}}
-@if(Auth::user()->role === 'admin' || Auth::user()->role === 'superadmin')
+@if(Auth::user()->role === 'guru' || Auth::user()->role === 'superadmin')
     
     <div class="bg-gray-50 min-h-screen pb-12">
         <!-- Header Ustad -->
@@ -83,7 +83,7 @@
                         @foreach($todayClasses as $class)
                         <div class="p-6 flex items-center justify-between hover:bg-gray-50 transition">
                             <div>
-                                <h3 class="text-lg font-bold text-green-700">{{ $class->subject->name }}</h3>
+                                <h3 class="text-lg font-bold text-green-700">{{ $class->classGroup?->subject?->name ?? '-' }}</h3>
                                 <p class="text-gray-600">{{ $class->title }}</p>
                                 <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded mt-1 inline-block">
                                     {{ $class->created_at->format('H:i') }} WIB

@@ -15,12 +15,19 @@ use Illuminate\Support\Facades\Auth;
 
 class MeetingResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Meeting::class;
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
     protected static ?string $navigationGroup = 'Akademik (Ustad)';
     protected static ?string $navigationLabel = 'Jadwal & Absensi';
     protected static ?string $label = 'Jadwal & Absensi';
     protected static ?string $pluralLabel = 'Jadwal & Absensi';
+
+    protected static function permission(): string
+    {
+        return 'meetings.manage';
+    }
 
     public static function form(Form $form): Form
     {

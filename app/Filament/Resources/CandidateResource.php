@@ -14,6 +14,8 @@ use Filament\Notifications\Notification;
 
 class CandidateResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = User::class;
 
     // Setting Tampilan Menu
@@ -23,6 +25,11 @@ class CandidateResource extends Resource
     protected static ?string $pluralModelLabel = 'Calon Peserta Didik';
     protected static ?string $navigationGroup = 'Pendaftaran (PPDB)';
     protected static ?int $navigationSort = 1;
+
+    protected static function permission(): string
+    {
+        return 'spmb.manage';
+    }
 
     // FILTER QUERY: Hanya ambil siswa yang BELUM AKTIF
     public static function getEloquentQuery(): Builder

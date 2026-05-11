@@ -33,6 +33,11 @@ class ManageSPMBDeadline extends Page implements HasForms
 
     public ?array $data = [];
 
+    public static function canAccess(array $parameters = []): bool
+    {
+        return auth()->user()?->hasAccess('settings.manage') ?? false;
+    }
+
     public function mount(): void
     {
         // Ambil data deadline dari database

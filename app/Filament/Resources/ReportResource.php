@@ -14,6 +14,8 @@ use Filament\Tables\Table;
 
 class ReportResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = ClassGroup::class;
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationGroup = 'Akademik (Ustad)';
@@ -21,6 +23,11 @@ class ReportResource extends Resource
     protected static ?string $slug = 'raport';
     protected static ?string $label = 'Raport Santri';
     protected static ?string $pluralLabel = 'Raport Santri';
+
+    protected static function permission(): string
+    {
+        return 'reports.view';
+    }
 
 
     public static function infolist(Infolist $infolist): Infolist

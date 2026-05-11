@@ -20,13 +20,13 @@ class StudentController extends Controller
     {
         $user = Auth::user();
 
-        // --- LOGIC KHUSUS USTAD (ADMIN) ---
-        if ($user->role === 'admin' || $user->role === 'superadmin') {
+        // --- LOGIC KHUSUS GURU ---
+        if ($user->role === 'guru' || $user->role === 'superadmin') {
             // Ambil data ringkasan untuk Ustad
             $totalMeetings = Meeting::where('user_id', $user->id)->count();
             
             // Jadwal Hari Ini
-            $todayClasses = Meeting::with('subject')
+            $todayClasses = Meeting::with('classGroup.subject')
                 ->where('user_id', $user->id)
                 ->whereDate('date', now())
                 ->get();

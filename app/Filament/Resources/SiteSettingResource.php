@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 
 class SiteSettingResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = SiteSetting::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
@@ -19,6 +21,11 @@ class SiteSettingResource extends Resource
     protected static ?string $navigationGroup = 'Pengaturan';
     
     protected static ?string $navigationLabel = 'Setting Website';
+
+    protected static function permission(): string
+    {
+        return 'settings.manage';
+    }
 
     public static function form(Form $form): Form
     {

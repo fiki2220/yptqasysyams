@@ -12,6 +12,8 @@ use Filament\Tables\Table;
 
 class PaymentResource extends Resource
 {
+    use \App\Filament\Concerns\ChecksResourcePermission;
+
     protected static ?string $model = Payment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
@@ -19,6 +21,11 @@ class PaymentResource extends Resource
     protected static ?string $navigationGroup = 'Keuangan';
 
     protected static ?string $navigationLabel = 'Data Pembayaran';
+
+    protected static function permission(): string
+    {
+        return 'payments.manage';
+    }
 
     public static function form(Form $form): Form
     {

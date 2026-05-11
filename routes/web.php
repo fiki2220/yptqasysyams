@@ -110,6 +110,11 @@ Route::get('/rapor-pdf/{class_group}/{user}', function(App\Models\ClassGroup $cl
     if (!auth()->check()) {
         abort(403);
     }
+
+    if (! auth()->user()->hasAccess('reports.download')) {
+        abort(403);
+    }
+
     $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('filament.report.rapor-pdf', [
         'student' => $user,
         'classGroup' => $class_group

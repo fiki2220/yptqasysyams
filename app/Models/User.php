@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 
 // --- 1. TAMBAHAN IMPORT FILAMENT ---
 use Filament\Models\Contracts\FilamentUser;
@@ -25,7 +26,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        'role',         // superadmin, admin, student
+        'role',         // superadmin, guru, student
         'nisn',         // Khusus siswa
         'phone',
         'address',
@@ -84,7 +85,7 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Attendance::class);
     }
 
-    // --- RELASI UNTUK USTAD (ADMIN) ---
+    // --- RELASI UNTUK GURU ---
 
     // Ustad membuat banyak pertemuan
     public function teachingMeetings()
@@ -121,9 +122,35 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Evaluation::class);
     }
 
+    public function hasAccess(string $permission): bool
+    {
+        if ($this->role === 'superadmin') {
+            return true;
+        }
+
+        if (! in_array($this->role, ['guru', 'student'], true)) {
+            return false;
+        }
+
+        return Cache::remember(
+            "role_permission:{$this->role}:{$permission}",
+            now()->addMinutes(10),
+            fn (): bool => RolePermission::query()
+                ->where('role', $this->role)
+                ->where('permission', $permission)
+                ->where('is_allowed', true)
+                ->exists()
+        );
+    }
+
     // --- 3. FUNGSI WAJIB FILAMENT UNTUK IZIN MASUK ---
     public function canAccessPanel(Panel $panel): bool
     {
-        return in_array($this->role, ['superadmin', 'admin']);
+        if ($this->role === 'superadmin') {
+            return true;
+        }
+
+        return $this->role === 'guru'
+            && ($this->hasAccess('dashboard.view') || $this->hasAccess('panel.access'));
     }
 }
