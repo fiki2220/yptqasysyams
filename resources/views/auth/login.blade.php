@@ -1,4 +1,19 @@
 <x-guest-layout>
+    <div class="mb-6">
+        <a href="{{ url('/') }}"
+            class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition hover:text-green-800 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 rounded-md">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            Kembali ke Beranda
+        </a>
+    </div>
+
+    <div class="mb-6">
+        <h1 class="text-xl font-semibold text-gray-900">Masuk Akun</h1>
+        <p class="mt-1 text-sm text-gray-500">Gunakan email dan password yang sudah terdaftar.</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

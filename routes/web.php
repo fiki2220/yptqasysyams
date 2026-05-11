@@ -4,8 +4,11 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Middleware\EnsureUserHasPermission;
 use App\Models\Post; // <--- Pastikan Model ini ada
 use App\Models\SiteSetting; // <--- Pastikan Model ini ada
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Str;
@@ -89,16 +92,16 @@ Route::middleware(['auth', 'verified', 'is_active'])->group(function () {
 
     // Fitur Siswa
     Route::get('/transcript', [StudentController::class, 'transcript'])
-        ->middleware('permission:reports.view')
+        ->middleware(EnsureUserHasPermission::class . ':reports.view')
         ->name('student.transcript');
 
     Route::get('/attendance', [StudentController::class, 'attendance'])
-        ->middleware('permission:dashboard.view')
+        ->middleware(EnsureUserHasPermission::class . ':dashboard.view')
         ->name('student.attendance');
 
     // Payment Midtrans
     Route::get('/payment/checkout', [PaymentController::class, 'checkout'])
-        ->middleware('permission:payments.checkout')
+        ->middleware(EnsureUserHasPermission::class . ':payments.checkout')
         ->name('payment.checkout');
 
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
@@ -124,7 +127,7 @@ Route::get('/rapor-pdf/{class_group}/{user}', function(App\Models\ClassGroup $cl
         'classGroup' => $class_group
     ]);
     return $pdf->stream('Rapor-' . Str::slug($user->name) . '.pdf');
-})->middleware(['auth', 'permission:reports.download'])->name('rapor.pdf');
+})->middleware(['auth', EnsureUserHasPermission::class . ':reports.download'])->name('rapor.pdf');
 
 // ===== TEMPORARY: CHECK DATABASE (HAPUS SETELAH DIGUNAKAN) =====
 Route::get('/check-db', function () {

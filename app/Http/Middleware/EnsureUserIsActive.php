@@ -4,37 +4,38 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureUserIsActive
+class EnsureUserHasPermission
 {
-    /**
-     * Handle an incoming request.
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string $permission): Response
     {
-        // 1. Cek apakah user sudah login?
-        if (Auth::check()) {
-            
-            // 2. Jika Role Guru/Superadmin, bebaskan saja (biar gak kekunci sendiri)
-            if(Auth::user()->role === 'guru' || Auth::user()->role === 'superadmin') {
-                return $next($request);
-            }
+        $user = $request->user();
 
-            // 3. Jika Role Siswa dan BELUM AKTIF (is_active = 0)
-            if (!Auth::user()->is_active) {
-                
-                // Agar tidak redirect loop, cek apakah dia sedang membuka halaman approval
-                if ($request->routeIs('approval.notice')) {
-                    return $next($request);
-                }
-
-                // Lempar ke halaman approval
-                return redirect()->route('approval.notice');
-            }
+        if (! $user) {
+            return redirect()->route('login');
         }
 
-        return $next($request);
+        if ($user->hasAccess($permission)) {
+            return $next($request);
+        }
+
+        if ($request->expectsJson()) {
+            abort(403, 'Anda tidak memiliki hak akses.');
+        }
+
+        if ($user->role === 'student') {
+            return redirect()->route('dashboard')
+                ->with('error', 'Anda tidak memiliki hak akses untuk membuka halaman tersebut.');
+        }
+
+        $fallback = $user->getFirstAllowedFilamentRoute();
+
+        if ($fallback) {
+            return redirect($fallback)
+                ->with('error', 'Hak akses Anda tidak mengizinkan membuka halaman tersebut.');
+        }
+
+        return redirect()->route('access.denied');
     }
 }

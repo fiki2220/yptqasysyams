@@ -9,7 +9,9 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
+use App\Http\Middleware\RedirectUnauthorizedFilamentAccess;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -47,6 +49,11 @@ class AdminPanelProvider extends PanelProvider
             // 4. LINK LOGO KE HALAMAN DEPAN WEB
             ->homeUrl('/') 
 
+            ->renderHook(
+                PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE,
+                fn (): string => view('filament.auth.back-home-link')->render(),
+            )
+
             // Menu Dashboard
             ->pages([
                 // Pages\Dashboard::class,
@@ -71,6 +78,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                RedirectUnauthorizedFilamentAccess::class,
             ])
             ->font('Inter');
     }
