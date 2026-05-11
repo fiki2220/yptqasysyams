@@ -30,27 +30,27 @@ class UserResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()?->hasAccess('users.manage') ?? false;
+        return auth()->user()?->hasAnyAccess(['users.view', 'users.manage']) ?? false;
     }
 
     public static function canCreate(): bool
     {
-        return static::canViewAny();
+        return auth()->user()?->hasAnyAccess(['users.create', 'users.manage']) ?? false;
     }
 
     public static function canEdit($record): bool
     {
-        return static::canViewAny();
+        return auth()->user()?->hasAnyAccess(['users.update', 'users.manage']) ?? false;
     }
 
     public static function canDelete($record): bool
     {
-        return static::canViewAny();
+        return auth()->user()?->hasAnyAccess(['users.delete', 'users.manage']) ?? false;
     }
 
     public static function canDeleteAny(): bool
     {
-        return static::canViewAny();
+        return auth()->user()?->hasAnyAccess(['users.delete', 'users.manage']) ?? false;
     }
 
     public static function form(Form $form): Form

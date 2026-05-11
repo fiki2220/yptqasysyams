@@ -16,7 +16,9 @@ class EnsureUserHasPermission
             return redirect()->route('login');
         }
 
-        if ($user->hasAccess($permission)) {
+        $permissions = array_filter(explode('|', $permission));
+
+        if ($user->hasAnyAccess($permissions)) {
             return $next($request);
         }
 

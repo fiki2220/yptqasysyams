@@ -28,36 +28,70 @@ class RedirectUnauthorizedFilamentAccess
             return redirect()->route('access.denied');
         }
 
-        $permission = $this->permissionForRoute($request->route()?->getName());
+        $routeName = $request->route()?->getName();
 
-        if ($permission && $user->hasAccess($permission)) {
+        if ($routeName === 'filament.admin.home' && ! $user->hasAccess('dashboard.view')) {
+            return $this->redirectToAllowedPage($user, $request);
+        }
+
+        $permissions = $this->permissionsForRoute($routeName);
+
+        if ($permissions === []) {
+            return $next($request);
+        }
+
+        if ($user->hasAnyAccess($permissions)) {
             return $next($request);
         }
 
         return $this->redirectToAllowedPage($user, $request);
     }
 
-    private function permissionForRoute(?string $routeName): ?string
+    private function permissionsForRoute(?string $routeName): array
     {
         if (! $routeName || $routeName === 'filament.admin.home') {
-            return null;
+            return [];
         }
 
-        return match (true) {
-            str_contains($routeName, '.resources.candidates.') => 'spmb.manage',
-            str_contains($routeName, '.resources.class-groups.') => 'classes.manage',
-            str_contains($routeName, '.resources.meetings.') => 'meetings.manage',
-            str_contains($routeName, '.resources.assessments.') => 'assessments.manage',
-            str_contains($routeName, '.resources.evaluations.') => 'evaluations.manage',
-            str_contains($routeName, '.resources.grades.') => 'grades.manage',
-            str_contains($routeName, '.resources.payments.') => 'payments.manage',
-            str_contains($routeName, '.resources.posts.') => 'posts.manage',
-            str_contains($routeName, '.resources.site-settings.') => 'settings.manage',
-            str_contains($routeName, '.resources.raport.') => 'reports.view',
-            str_contains($routeName, '.resources.users.') => 'users.manage',
-            str_contains($routeName, '.resources.role-permissions.') => 'superadmin.only',
+        if (str_contains($routeName, '.resources.role-permissions.')) {
+            return ['superadmin.only'];
+        }
+
+        if (str_contains($routeName, '.resources.site-settings.manage-spmb')) {
+            return ['settings.update', 'settings.manage'];
+        }
+
+        $module = match (true) {
+            str_contains($routeName, '.resources.candidates.') => 'spmb',
+            str_contains($routeName, '.resources.class-groups.') => 'classes',
+            str_contains($routeName, '.resources.semesters.') => 'semesters',
+            str_contains($routeName, '.resources.meetings.') => 'meetings',
+            str_contains($routeName, '.resources.assessments.') => 'assessments',
+            str_contains($routeName, '.resources.evaluations.') => 'evaluations',
+            str_contains($routeName, '.resources.grades.') => 'grades',
+            str_contains($routeName, '.resources.payments.') => 'payments',
+            str_contains($routeName, '.resources.posts.') => 'posts',
+            str_contains($routeName, '.resources.site-settings.') => 'settings',
+            str_contains($routeName, '.resources.raport.') => 'reports',
+            str_contains($routeName, '.resources.users.') => 'users',
             default => null,
         };
+
+        if (! $module) {
+            return [];
+        }
+
+        if ($module === 'reports') {
+            return ['reports.view'];
+        }
+
+        $action = match (true) {
+            str_contains($routeName, '.create') => 'create',
+            str_contains($routeName, '.edit') => 'update',
+            default => 'view',
+        };
+
+        return ["{$module}.{$action}", "{$module}.manage"];
     }
 
     private function redirectToAllowedPage($user, Request $request): Response

@@ -17,6 +17,7 @@ class ListSiteSettings extends ListRecords
                 ->label('⏱️ Atur Deadline SPMB')
                 ->icon('heroicon-o-calendar-days')
                 ->url(static::getResource()::getUrl('manage-spmb'))
+                ->visible(fn (): bool => auth()->user()?->hasAnyAccess(['settings.update', 'settings.manage']) ?? false)
                 ->button()
                 ->color('success'),
             Actions\CreateAction::make(),

@@ -6,9 +6,8 @@ use App\Filament\Resources\RolePermissionResource\Pages;
 use App\Models\RolePermission;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,22 +35,22 @@ class RolePermissionResource extends Resource
 
     public static function canCreate(): bool
     {
-        return Auth::user()?->role === 'superadmin';
+        return false;
     }
 
     public static function canEdit($record): bool
     {
-        return Auth::user()?->role === 'superadmin';
+        return false;
     }
 
     public static function canDelete($record): bool
     {
-        return Auth::user()?->role === 'superadmin';
+        return false;
     }
 
     public static function canDeleteAny(): bool
     {
-        return Auth::user()?->role === 'superadmin';
+        return false;
     }
 
     public static function form(Form $form): Form
@@ -64,59 +63,10 @@ class RolePermissionResource extends Resource
                     ->required()
                     ->native(false),
 
-                Forms\Components\Select::make('permission')
+                Forms\Components\CheckboxList::make('permissions')
                     ->label('Permission')
                     ->options(RolePermission::PERMISSIONS)
-                    ->required()
-                    ->searchable()
-                    ->native(false),
-
-                Forms\Components\Toggle::make('is_allowed')
-                    ->label('Diizinkan')
-                    ->default(false),
-            ]);
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('role')
-                    ->label('Role')
-                    ->badge()
-                    ->formatStateUsing(fn (string $state): string => RolePermission::ROLES[$state] ?? $state),
-
-                Tables\Columns\TextColumn::make('permission')
-                    ->label('Permission')
-                    ->formatStateUsing(fn (string $state): string => RolePermission::PERMISSIONS[$state] ?? $state)
-                    ->searchable(),
-
-                Tables\Columns\IconColumn::make('is_allowed')
-                    ->label('Diizinkan')
-                    ->boolean(),
-
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Diubah')
-                    ->dateTime()
-                    ->sortable(),
-            ])
-            ->filters([
-                Tables\Filters\SelectFilter::make('role')
-                    ->options(RolePermission::ROLES),
-
-                Tables\Filters\TernaryFilter::make('is_allowed')
-                    ->label('Diizinkan'),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make()
-                    ->after(fn (RolePermission $record) => static::clearPermissionCache($record)),
-                Tables\Actions\DeleteAction::make()
-                    ->after(fn (RolePermission $record) => static::clearPermissionCache($record)),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    ->columns(2),
             ]);
     }
 
@@ -130,13 +80,15 @@ class RolePermissionResource extends Resource
     {
         return [
             'index' => Pages\ListRolePermissions::route('/'),
-            'create' => Pages\CreateRolePermission::route('/create'),
-            'edit' => Pages\EditRolePermission::route('/{record}/edit'),
         ];
     }
 
-    protected static function clearPermissionCache(RolePermission $record): void
+    public static function notifyPermissionUpdated(): void
     {
-        cache()->forget($record->cacheKey());
+        Notification::make()
+            ->success()
+            ->title('Hak akses berhasil diperbarui.')
+            ->body('User terkait akan mengikuti akses terbaru setelah reload halaman.')
+            ->send();
     }
 }

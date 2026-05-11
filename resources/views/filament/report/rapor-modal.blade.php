@@ -6,6 +6,7 @@
             <p class="text-sm text-gray-400">Rumah Qur'an Asy-Syams</p>
             <p class="text-gray-500">{{ $classGroup->name ?? '-' }} | Semester: {{ $classGroup->semester->name ?? '-' }}</p>
         </div>
+        @if(auth()->user()?->hasAccess('reports.download'))
         <div>
             <a href="{{ route('rapor.pdf', ['class_group' => $classGroup->id, 'user' => $student->id]) }}" 
                target="_blank" 
@@ -14,6 +15,7 @@
                 Print PDF
             </a>
         </div>
+        @endif
     </div>
 
     <!-- Data Santri -->

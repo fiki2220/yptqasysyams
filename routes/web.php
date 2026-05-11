@@ -98,7 +98,7 @@ Route::middleware(['auth', 'verified', 'is_active'])->group(function () {
 
     // Payment Midtrans
     Route::get('/payment/checkout', [PaymentController::class, 'checkout'])
-        ->middleware('permission:payments.manage')
+        ->middleware('permission:payments.checkout')
         ->name('payment.checkout');
 
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');

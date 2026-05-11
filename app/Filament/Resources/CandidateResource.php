@@ -150,6 +150,7 @@ class CandidateResource extends Resource
                     ->modalHeading('Terima Calon Siswa?')
                     ->modalDescription('Siswa akan diaktifkan dan bisa login ke dashboard. Data akan pindah ke menu "Data Pengguna".')
                     ->modalSubmitActionLabel('Ya, Terima')
+                    ->visible(fn (): bool => auth()->user()?->hasAnyAccess(['spmb.approve', 'spmb.manage']) ?? false)
                     ->action(function (User $record) {
                         // Update status jadi Aktif
                         $record->update(['is_active' => true]);

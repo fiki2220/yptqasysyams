@@ -24,7 +24,7 @@ class SemesterResource extends Resource
 
     protected static function permission(): string
     {
-        return 'settings.manage';
+        return 'semesters.manage';
     }
 
     public static function form(Form $form): Form

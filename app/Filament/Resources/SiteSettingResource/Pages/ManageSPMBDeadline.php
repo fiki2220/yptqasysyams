@@ -35,7 +35,7 @@ class ManageSPMBDeadline extends Page implements HasForms
 
     public static function canAccess(array $parameters = []): bool
     {
-        return auth()->user()?->hasAccess('settings.manage') ?? false;
+        return auth()->user()?->hasAnyAccess(['settings.update', 'settings.manage']) ?? false;
     }
 
     public function mount(): void
