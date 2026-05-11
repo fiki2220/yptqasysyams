@@ -21,7 +21,7 @@ class AssessmentReportController extends Controller
         
         // Jika bukan guru/superadmin, redirect
         if (! $user->hasAccess('reports.view')) {
-            abort(403);
+            return redirect()->route('access.denied');
         }
 
         // Default: bulan dan tahun saat ini
@@ -84,7 +84,7 @@ class AssessmentReportController extends Controller
         $user = Auth::user();
         
         if (! $user->hasAccess('reports.download')) {
-            abort(403);
+            return redirect()->route('access.denied');
         }
 
         $month = $request->query('month', now()->month);
@@ -123,7 +123,7 @@ class AssessmentReportController extends Controller
         $user = Auth::user();
         
         if (! $user->hasAccess('reports.view')) {
-            abort(403);
+            return redirect()->route('access.denied');
         }
 
         $semesterId = $request->query('semester_id');
@@ -176,7 +176,7 @@ class AssessmentReportController extends Controller
         $user = Auth::user();
         
         if (! $user->hasAccess('reports.download')) {
-            abort(403);
+            return redirect()->route('access.denied');
         }
 
         $semesterId = $request->query('semester_id');

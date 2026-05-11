@@ -21,7 +21,7 @@ class RbacTest extends TestCase
         $this->actingAs($santri);
 
         $response = $this->get('/admin/meetings');
-        $response->assertStatus(403);
+        $response->assertRedirect(route('dashboard', absolute: false));
     }
     
     public function test_ustad_can_access_admin_panel(): void

@@ -40,12 +40,28 @@ class UserResource extends Resource
 
     public static function canEdit($record): bool
     {
-        return auth()->user()?->hasAnyAccess(['users.update', 'users.manage']) ?? false;
+        $user = auth()->user();
+
+        if (! ($user?->hasAnyAccess(['users.update', 'users.manage']) ?? false)) {
+            return false;
+        }
+
+        return $user->role === 'superadmin' || $record->role !== 'superadmin';
     }
 
     public static function canDelete($record): bool
     {
-        return auth()->user()?->hasAnyAccess(['users.delete', 'users.manage']) ?? false;
+        $user = auth()->user();
+
+        if (! ($user?->hasAnyAccess(['users.delete', 'users.manage']) ?? false)) {
+            return false;
+        }
+
+        if ($record->id === $user->id) {
+            return false;
+        }
+
+        return $user->role === 'superadmin' || $record->role !== 'superadmin';
     }
 
     public static function canDeleteAny(): bool
@@ -78,12 +94,19 @@ class UserResource extends Resource
                             ->maxLength(255),
                             
                         Forms\Components\Select::make('role')
-                            ->options([
+                            ->options(fn (): array => auth()->user()?->role === 'superadmin' ? [
                                 'superadmin' => 'Super Admin (Developer)',
+                                'guru' => 'Guru',
+                                'student' => 'Siswa (Santri)',
+                            ] : [
                                 'guru' => 'Guru',
                                 'student' => 'Siswa (Santri)',
                             ])
                             ->required()
+                            ->disabled(fn (?User $record): bool => $record?->id === auth()->id() && $record->role === 'superadmin')
+                            ->helperText(fn (?User $record): ?string => $record?->id === auth()->id() && $record->role === 'superadmin'
+                                ? 'Role akun superadmin yang sedang login tidak bisa diubah dari halaman ini.'
+                                : null)
                             ->reactive(), // Agar form bisa berubah sesuai pilihan
                     ])->columns(2),
 
@@ -115,7 +138,10 @@ class UserResource extends Resource
                         Forms\Components\Toggle::make('is_active')
                             ->label('Akun Aktif?')
                             ->default(true)
-                            ->helperText('Jika dimatikan, user tidak bisa login.'),
+                            ->disabled(fn (?User $record): bool => ! static::canManageActivation($record))
+                            ->helperText(fn (?User $record): string => static::canManageActivation($record)
+                                ? 'Jika dimatikan, user tidak bisa login.'
+                                : 'Status aktif hanya bisa diatur superadmin dan akun sendiri tidak bisa dinonaktifkan.'),
                     ])->columns(2),
             ]);
     }
@@ -146,7 +172,8 @@ class UserResource extends Resource
                     ->searchable(),
                     
                 Tables\Columns\ToggleColumn::make('is_active')
-                    ->label('Aktif'),
+                    ->label('Aktif')
+                    ->disabled(fn (User $record): bool => ! static::canManageActivation($record)),
                     
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -162,8 +189,10 @@ class UserResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->visible(fn (User $record): bool => static::canEdit($record)),
+                Tables\Actions\DeleteAction::make()
+                    ->visible(fn (User $record): bool => static::canDelete($record)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -206,5 +235,16 @@ class UserResource extends Resource
             'teachers' => Tab::make('Guru')
                 ->modifyQueryUsing(fn (Builder $query) => $query->where('role', '!=', 'student')),
         ];
+    }
+
+    public static function canManageActivation(?User $record = null): bool
+    {
+        $user = auth()->user();
+
+        if ($user?->role !== 'superadmin') {
+            return false;
+        }
+
+        return ! $record || $record->id !== $user->id;
     }
 }
