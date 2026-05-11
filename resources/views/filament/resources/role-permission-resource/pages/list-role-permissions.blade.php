@@ -1,13 +1,11 @@
-<x-filament-panels::page>
+<x-filament::page>
     <form wire:submit="save" class="space-y-6">
         {{ $this->form }}
 
-        <x-filament-actions::modals />
-
-        <div class="flex justify-end">
-            <x-filament::button type="submit">
-                Simpan Hak Akses
-            </x-filament::button>
+        <div class="flex justify-end gap-2">
+            @foreach ($this->getFormActions() as $action)
+                {{ $action }}
+            @endforeach
         </div>
     </form>
-</x-filament-panels::page>
+</x-filament::page>

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\RolePermissionResource\Pages;
 
 use App\Filament\Resources\RolePermissionResource;
 use App\Models\RolePermission;
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -80,6 +81,16 @@ class ListRolePermissions extends Page implements HasForms
 
         $this->setPermissionsForRole($role);
         $this->form->fill($this->data);
+    }
+
+    protected function getFormActions(): array
+    {
+        return [
+            Actions\Action::make('save')
+                ->label('Simpan Hak Akses')
+                ->submit('save')
+                ->keyBindings(['mod+s']),
+        ];
     }
 
     public function setPermissionsForRole(string $role): void
