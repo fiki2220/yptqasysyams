@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Payment;
+use App\Models\RolePermission;
 use App\Models\Semester;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -15,6 +16,12 @@ class StudentDashboardPaymentTest extends TestCase
     public function test_pay_button_is_visible_when_status_is_pending()
     {
         $user = User::factory()->create(['role' => 'student', 'is_active' => true]);
+        RolePermission::create([
+            'role' => 'student',
+            'permission' => 'payments.checkout',
+            'is_allowed' => true,
+        ]);
+
         $semester = Semester::create([
             'name' => 'Ganjil',
             'year' => '2026/2027',

@@ -26,6 +26,12 @@ class EnsureUserHasPermission
             return $next($request);
         }
 
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'message' => 'Anda tidak memiliki izin untuk mengakses fitur ini.',
+            ], 403);
+        }
+
         return $this->redirectSafely($user);
     }
 

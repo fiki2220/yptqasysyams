@@ -6,8 +6,10 @@ use App\Models\Payment;
 use App\Models\Semester;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Throwable;
 
 class PaymentController extends Controller
 {
@@ -18,6 +20,18 @@ class PaymentController extends Controller
 
         if (!$activeSemester) {
             return response()->json(['message' => 'Tidak ada semester aktif'], 404);
+        }
+
+        if (! config('services.midtrans.server_key') || ! config('services.midtrans.client_key')) {
+            Log::warning('Midtrans checkout blocked: missing config key', [
+                'user_id' => $user->id,
+                'role' => $user->role,
+                'has_payments_checkout' => $user->hasAccess('payments.checkout'),
+            ]);
+
+            return response()->json([
+                'message' => 'Konfigurasi pembayaran belum lengkap.',
+            ], 500);
         }
 
         // 1. Konfigurasi Midtrans
@@ -64,11 +78,35 @@ class PaymentController extends Controller
                 ]]
             ];
 
-            $snapToken = Snap::getSnapToken($params);
+            try {
+                $snapToken = Snap::getSnapToken($params);
+            } catch (Throwable $exception) {
+                Log::error('Failed to create Midtrans Snap token', [
+                    'user_id' => $user->id,
+                    'role' => $user->role,
+                    'has_payments_checkout' => $user->hasAccess('payments.checkout'),
+                    'payment_id' => $payment->id,
+                    'order_id' => $payment->order_id,
+                    'message' => $exception->getMessage(),
+                ]);
+
+                return response()->json([
+                    'message' => 'Gagal membuat token pembayaran. Silakan coba lagi.',
+                ], 500);
+            }
             
             // Simpan token ke database biar gak request ulang terus
             $payment->update(['snap_token' => $snapToken]);
         }
+
+        Log::info('Midtrans Snap token ready', [
+            'user_id' => $user->id,
+            'role' => $user->role,
+            'has_payments_checkout' => $user->hasAccess('payments.checkout'),
+            'payment_id' => $payment->id,
+            'order_id' => $payment->order_id,
+            'snap_token_created' => ! empty($payment->snap_token),
+        ]);
 
         return response()->json(['snap_token' => $payment->snap_token]);
     }

@@ -12,7 +12,7 @@ class GradeCalculationService
      * @param iterable $evaluations
      * @return float
      */
-    public function calculateFinalGrade($assessments, $evaluations): float
+    public function calculateFinalGrade(iterable $assessments, iterable $evaluations): float
     {
         $assessmentAvg = $this->calculateAssessmentAverage($assessments);
         $evaluationAvg = $this->calculateEvaluationAverage($evaluations);
@@ -23,7 +23,7 @@ class GradeCalculationService
     /**
      * Hitung rata-rata Assessment
      */
-    public function calculateAssessmentAverage($assessments): float
+    public function calculateAssessmentAverage(iterable $assessments): float
     {
         $totalScore = 0;
         $count = 0;
@@ -62,7 +62,7 @@ class GradeCalculationService
     /**
      * Hitung rata-rata Evaluation
      */
-    public function calculateEvaluationAverage($evaluations): float
+    public function calculateEvaluationAverage(iterable $evaluations): float
     {
         $totalScore = 0;
         $count = 0;

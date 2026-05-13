@@ -118,9 +118,18 @@
 {{--              TAMPILAN SISWA                --}}
 {{-- ========================================== --}}
 @else
+    @php
+        $canCheckoutPayment = Auth::user()->hasAccess('payments.checkout');
+        $hasUnpaidBill = isset($activeSemester) && $activeSemester && ! in_array($paymentStatus, ['success', 'paid']);
+        $midtransSnapUrl = config('services.midtrans.is_production')
+            ? 'https://app.midtrans.com/snap/snap.js'
+            : 'https://app.sandbox.midtrans.com/snap/snap.js';
+    @endphp
 
     <!-- SCRIPT MIDTRANS (Wajib Ada - Hanya load utk Siswa) -->
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+    @if($canCheckoutPayment && $hasUnpaidBill)
+        <script src="{{ $midtransSnapUrl }}" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+    @endif
 
     <div class="bg-gray-50 min-h-screen pb-12">
         <!-- Header Welcome -->
@@ -157,9 +166,13 @@
                             </div>
                         </div>
 
-                        @if(!in_array($paymentStatus, ['success', 'paid']))
+                        @if($hasUnpaidBill && $canCheckoutPayment)
                             <button id="pay-button" class="w-full md:w-auto px-6 py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition shadow-lg animate-pulse">
                                 Bayar Sekarang
+                            </button>
+                        @elseif($hasUnpaidBill)
+                            <button disabled class="w-full md:w-auto px-6 py-3 bg-gray-100 text-gray-400 font-bold rounded-lg cursor-not-allowed">
+                                Pembayaran Tidak Tersedia
                             </button>
                         @else
                              <button disabled class="w-full md:w-auto px-6 py-3 bg-gray-100 text-gray-400 font-bold rounded-lg cursor-not-allowed">
@@ -235,9 +248,30 @@
                 payButton.disabled = true;
 
                 // Panggil API Backend kita
-                fetch('{{ route("payment.checkout") }}')
-                    .then(response => response.json())
+                fetch('{{ route("payment.checkout") }}', {
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                })
+                    .then(async response => {
+                        const data = await response.json().catch(() => ({}));
+
+                        if (! response.ok) {
+                            throw new Error(data.message || 'Checkout pembayaran gagal.');
+                        }
+
+                        return data;
+                    })
                     .then(data => {
+                        if (!window.snap) {
+                            throw new Error('Script Midtrans Snap belum termuat. Silakan reload halaman.');
+                        }
+
+                        if (!data.snap_token) {
+                            throw new Error('Token pembayaran tidak tersedia.');
+                        }
+
                         // Munculkan Popup Midtrans
                         window.snap.pay(data.snap_token, {
                             onSuccess: function(result){
@@ -260,7 +294,7 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        alert('Terjadi kesalahan sistem.');
+                        alert(error.message || 'Terjadi kesalahan sistem.');
                         payButton.innerHTML = 'Bayar Sekarang';
                         payButton.disabled = false;
                     });
